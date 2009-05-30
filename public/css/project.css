@@ -12,7 +12,7 @@ body {
 	font: 400 13px/20px Georgia, Arial;
 	color: #444;
 	text-align: left;
-	background: #f0eee0;
+	background: #eeecde;
 }
 
 fieldset, img { border: 0; }
@@ -24,7 +24,8 @@ ol, ul { list-style: none; }
 
 button, img, input, label, select, td { vertical-align: middle; }
 button, label { cursor: pointer; }
-	label:hover { color: #000 !important; }
+	label { color: #777; }
+		label:hover { color: #000 !important; }
 
 :active, :focus { outline: none; -moz-outline-style: none; }
 
@@ -211,7 +212,7 @@ input, select, textarea {
 		#header li { float: left; }
 			#header li a span { text-decoration: underline; }
 			#header li a, #header li a:hover span { color: #888; text-decoration: none; }
-				#header li a.current { color: #000; }
+				#header li a.current span { color: #000; }
 			#header li img { margin-right: 10px; }
 			#header li i {
 				font: 14px Tahoma;
@@ -235,19 +236,14 @@ input, select, textarea {
 				#links span { color: #888; margin-right: 6px; }
 				#links a { color: #39C; margin-right: 7px; }
 					#links span a { margin: 0; }
-		#links p { float: right; color: #666; }
+		#links p { float: right; color: #555; }
 			#links p span { margin-left: 7px; }
 		#links img { margin-right: 10px; }
 
 #content { margin: 35px 0 30px; overflow: hidden; _zoom: 1;}
 
-
-
-
-			
-			
 .edit_user, .form { padding-top: 5px; }
-	.form p { margin: 0 0 25px 25px; }
+	.form p { margin: 0 0 25px 35px; }
 	.edit_user fieldset, .form fieldset { padding-bottom: 10px; overflow: hidden; _zoom: 1; }
 		.edit_user label, .form label {
 			float: left;
@@ -258,9 +254,12 @@ input, select, textarea {
 		.edit_user input, .form  input { float: left; width: 200px; margin-right: 15px; }
 		.form .checkbox { margin: 0 0 10px 155px; }
 			.form .checkbox label { float: none; width: auto; margin: 0; }
+	.form div { overflow: hidden; _zoom: 1; }
 		.edit_user button, .form button { width: 104px; margin: 0 8px 0 155px; }
 			.edit_user a.button { width: 82px; }
 			.form button { width: 216px; margin-right: 0; }
+		.form div.fieldWithErrors { overflow: visible; _zoom: auto; }
+			.form div.fieldWithErrors label { color: #f00 !important; }
 	.form a { float: left; margin-top: 4px; }
 
 .errorExplanation {

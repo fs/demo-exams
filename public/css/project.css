@@ -147,7 +147,7 @@ input, select, textarea {
 		height: 32px;
 		line-height: 32px;
 		text-shadow: 1px 1px 1px #fff;
-		background: #FFFFE0;
+		background: #FFFFE0 url(info.png) 18px 7px no-repeat;
 		padding: 0 18px 0 45px;
 		border: solid #eae1bd;
 		border-width: 0 1px 1px;
@@ -168,15 +168,6 @@ input, select, textarea {
 			#browsers p span { text-decoration: underline; }
 			#browsers p a, #browsers p a:hover span { color: #777; text-decoration: none; }
 			#browsers img { margin: 0 4px; }
-		.messages i {
-			position: absolute;
-			left: 18px;
-			top: 7px;
-			width: 16px;
-			height: 16px;
-			background: url(info.png);
-			overflow: hidden;
-		}
 
 #header {
 	position: relative;
@@ -236,7 +227,7 @@ input, select, textarea {
 				#links span { color: #888; margin-right: 6px; }
 				#links a { color: #39C; margin-right: 7px; }
 					#links span a { margin: 0; }
-		#links p { float: right; color: #555; }
+		#links p { float: right; color: #333; }
 			#links p span { margin-left: 7px; }
 		#links img { margin-right: 10px; }
 

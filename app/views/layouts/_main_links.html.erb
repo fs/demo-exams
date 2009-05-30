@@ -1,4 +1,4 @@
-		<ul><% if signed_in? %>
+		<% if signed_in? %><ul>
 			<li>
 				 <%= link_to_unless_current 'Settings', edit_user_path(current_user) do |name|
 					link_to 'Settings', edit_user_path(current_user), :class => 'current' 
@@ -13,5 +13,5 @@
 					link_to 'Your Exams', user_exams_path, :class => 'current'
 				end%>
 			</li>
-		<% end %></ul>
+		</ul><% end %>
 		<p>&copy; 2009 <a href="http://flatsoft.com" title="FlatSoft LLC">FlatSoft.com</a> &mdash; Ruby on Rails development.</p>

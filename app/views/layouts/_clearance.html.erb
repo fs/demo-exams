@@ -1,23 +1,33 @@
 	<div id="header">
-		<ul>
-			<% if signed_in? %>
-			<li><i><img src="/css/user.png" alt="" /><span><%= current_user.name %></span>(<%= link_to 'Log out', session_path, :method => :delete %>)</i>|</li>			
+		<% if signed_in? %><ul>
 			<li>
 				<%= link_to_unless_current '<img src="/css/edit.png" alt="" /><span>Settings</span>', edit_user_path(current_user) do |name|
 					link_to '<img src="/css/edit.png" alt="" /><span>Settings</span>', edit_user_path(current_user), :class => 'current'
-				end%>|
+				end%><i>|</i>
 			</li>
 			<li>
 				<%= link_to_unless_current '<img src="/css/exams.png" alt="" /><span>Exams list</span>', root_path do |name|
 					link_to '<img src="/css/exams.png" alt="" /><span>Exams list</span>', root_path, :class => 'current'
-				end%>|
+				end%><i>|</i>
 			</li>
 			<li>
 				<%= link_to_unless_current '<img src="/css/stats.png" alt="" /><span>Your Exams</span>', user_exams_path do |name|
 					link_to '<img src="/css/stats.png" alt="" /><span>Your Exams</span>', user_exams_path, :class => 'current'
 				end%>
 			</li>
-			<% end %>
-		</ul>
+		<% end %></ul>
 		<div><a href="/">FlatSoft<span> / Exams</span><i></i></a></div>
+	</div>
+	<div id="links">
+		<div id="links-inner">
+			<ul>
+				<li><img src="/css/link.png" alt="" /><span>Fast links:</span></li>
+				<li><a href="http://flatsoft.basecamphq.com/" title="Jump to basecamp.com">Basecamp</a> |</li>
+				<li><a href="http://github.com/fs/" title="Jump to github.com">Github</a> |</li>
+				<li><a href="http://mail.google.com/a/flatsoft.com/" title=" Jump to gmail.com">Gmail</a> |</li>
+				<li><a href="http://flatsoft.lighthouseapp.com/" title="Jump to lighthouseapp.com">Lighthouse</a> |</li>
+				<li><a href="http://pivotaltracker.com/" title="Jump to pivotaltracker.com">Pivotal Tracker</a></li>
+			</ul>
+			<% if signed_in? %><p><img src="/css/user.png" alt="" /><%= current_user.name %><span>(<%= link_to 'Log out', session_path, :method => :delete %>)</span></p><% end %>
+		</div>
 	</div>

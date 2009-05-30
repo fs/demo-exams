@@ -1,5 +1,5 @@
 /*
-	FlatSoft LLC
+	Author: Damir Gubaydullin (FlatSoft LLC)
 */
 
 /* Hard CSS, protect from dummies */
@@ -9,23 +9,22 @@
 * { margin: 0; padding: 0; }
 
 body {
-	font: 400 13px/19px Georgia, "Trebuchet MS", Arial;
+	font: 400 13px/20px Georgia, Arial;
 	color: #444;
 	text-align: left;
-	background: #eee;
+	background: #f0eee0;
 }
 
 fieldset, img { border: 0; }
 table, td { border-collapse: collapse; border-spacing: 0; }
-	td { vertical-align: middle; }
+	
 div { vertical-align: top; }
 
 ol, ul { list-style: none; }
 
-button, img, input, label, select { vertical-align: middle; }
+button, img, input, label, select, td { vertical-align: middle; }
 button, label { cursor: pointer; }
-	label { color: #666; }
-		label:hover { color: #000; }
+	label:hover { color: #000 !important; }
 
 :active, :focus { outline: none; -moz-outline-style: none; }
 
@@ -43,7 +42,7 @@ h1 {
 	font: 27px/32px Arial;
 	letter-spacing: -1px;
 	color: #222;
-	margin: 0 25px 20px;
+	margin: 0 35px 20px;
 	overflow: hidden;
 	_zoom: 1;
 }
@@ -126,37 +125,48 @@ input, select, textarea {
 
 
 /* Main containers (begin) */
-#content {
-	width: 905px;
-	background: #fff;
+#layout, .messages span, #browsers p { -moz-box-shadow: 0 5px 30px #E6E5D9; -webkit-box-shadow: 0 5px 30px #E6E5D9; box-shadow: 0 5px 30px #E6E5D9; }
+
+#layout {
+	width: 900px;
+	background: #fff url(header.gif) 0 0 repeat-x;
 	margin: 0 auto;
-	padding-bottom: 25px;
-	border: 1px solid #ddd;
+	border: 1px solid #e4e3d7;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 15px;
 	border-radius: 15px;
 	overflow: hidden;
 }
 
-.messages { height: 50px; text-align: center; }
-	.messages span {
+.messages, #browsers { height: 60px; text-align: center; }
+	#browsers { height: 90px }
+	.messages span, #browsers p {
 		position: relative;
 		display: inline-block;
-		height: 30px;
-		line-height: 30px;
+		height: 32px;
+		line-height: 32px;
 		text-shadow: 1px 1px 1px #fff;
-		background: #ffd;
+		background: #FFFFE0;
 		padding: 0 18px 0 45px;
-		border: 1px solid #ece4c3;
-		border-top: 0;
-		-moz-border-radius-bottomleft: 7px;
-		-moz-border-radius-bottomright: 7px;
-		-webkit-border-bottom-left-radius: 7px;
-		-webkit-border-bottom-right-radius: 7px;
-		border--bottom-left-radius: 7px;
-		border--bottom-right-radius: 7px;
+		border: solid #eae1bd;
+		border-width: 0 1px 1px;
+		-moz-border-radius-bottomleft: 8px;
+		-moz-border-radius-bottomright: 8px;
+		-webkit-border-bottom-left-radius: 8px;
+		-webkit-border-bottom-right-radius: 8px;
+		border--bottom-left-radius: 8px;
+		border--bottom-right-radius: 8px;
 		overflow: hidden;
 	}
+		#browsers p {
+			color: #888;
+			background: #f9e6cb;
+			padding-left: 18px;
+			border-color: #e4e3d7;
+		}
+			#browsers p span { text-decoration: underline; }
+			#browsers p a, #browsers p a:hover span { color: #777; text-decoration: none; }
+			#browsers img { margin: 0 4px; }
 		.messages i {
 			position: absolute;
 			left: 18px;
@@ -168,44 +178,28 @@ input, select, textarea {
 		}
 
 #header {
-	font-size: 14px;
-	background: #F1F5FE;
-	margin-bottom: 30px;
-	padding: 15px 25px;
-	border: 1px solid #fff;
-	-moz-border-radius-topleft: 13px;
-	-moz-border-radius-topright: 13px;
-	-webkit-border-top-left-radius: 13px;
-	-webkit-border-top-right-radius: 13px;
-	border-top-left-radius: 13px;
-	border-top-right-radius: 13px;
+	position: relative;
+	height: 101px;
+	padding: 0 35px;
+	border-bottom: 1px solid #E6E5D9;
 	overflow: hidden;
-	_zoom: 1;
+	white-space: nowrap;
 }
-	#header ul { float: left; padding-top: 7px; }
-		#header li { display: inline; color: #bbb; margin-right: 10px; }
-			#header li a { color: #2A7DE2; margin-right: 10px; text-decoration: none; }
-				#header li a.current { font-weight: 700; color: #555; }
-				#header li i { font-style: normal; margin-right: 10px; }
-					#header li i span { color: #777; margin-right: 7px; }
-				#header li a span, #header li i a { text-decoration: underline; margin-right: 0; }
-					#header li a:hover span, #header li i a:hover { text-decoration: none; }
-				#header li img { margin: -1px 8px 0 0; }
-	#header div { float: right; font: 25px/30px Georgia; }
+	#header div { float: left; font: 37px/40px Georgia; padding-top: 30px; }
 		#header div a {
 			position: relative;
-			float: right;
+			float: left;
 			color: #333;
 			text-decoration: none;
+			text-shadow: 1px 1px 1px #fff;
 			border-bottom: 1px dotted #999;
-			white-space: nowrap;
 		}
 			#header div a:hover { border-bottom-style: solid; }
 		#header div span { color: #777; }
 		#header div i {
 			position: absolute;
-			left: -20px;
-			top: 6px;
+			right: -20px;
+			top: 5px;
 			display: none;
 			width: 11px;
 			height: 10px;
@@ -213,7 +207,45 @@ input, select, textarea {
 			overflow: hidden;
 		}
 			#header div a:hover i { display: block; }
+	#header ul { float: right; font-size: 20px; padding-top: 41px; }
+		#header li { float: left; }
+			#header li a span { text-decoration: underline; }
+			#header li a, #header li a:hover span { color: #888; text-decoration: none; }
+				#header li a.current { color: #000; }
+			#header li img { margin-right: 10px; }
+			#header li i {
+				font: 14px Tahoma;
+				color: #ddd;
+				margin: 0 14px;
+				vertical-align: middle;
+			}
 
+#links { border-bottom: 1px solid #D5E1EC; }
+	#links-inner {
+		height: 42px;
+		line-height: 42px;
+		color: #D5E1EC;
+		background: #E1F1FA;
+		padding: 0 35px;
+		border: solid #fff;
+		border-width: 1px 0;
+	}
+		#links ul { float: left; }
+			#links li { display: inline; margin-right: 7px; }
+				#links span { color: #888; margin-right: 6px; }
+				#links a { color: #39C; margin-right: 7px; }
+					#links span a { margin: 0; }
+		#links p { float: right; color: #666; }
+			#links p span { margin-left: 7px; }
+		#links img { margin-right: 10px; }
+
+#content { margin: 35px 0 30px; overflow: hidden; _zoom: 1;}
+
+
+
+
+			
+			
 .edit_user, .form { padding-top: 5px; }
 	.form p { margin: 0 0 25px 25px; }
 	.edit_user fieldset, .form fieldset { padding-bottom: 10px; overflow: hidden; _zoom: 1; }
@@ -292,20 +324,19 @@ input, select, textarea {
 	
 /* Footer (begin) */
 #footer {
-	width: 855px;
-	font-size: 12px;
-	color: #888;
-	background: #eee;
-	margin: 0 auto;
-	padding: 13px 25px 50px;
+	height: 40px;
+	font: 12px/40px Georgia;
+	color: #999;
+	padding: 0 35px;
+	border-top: 2px solid #e4e3d7;
 	overflow: hidden;
 	_zoom: 1;
 }
-	#footer a { color: #777; }
-	#footer a.current { font-weight: 700; color: #666; }
-		#footer a:hover { text-decoration: none; }
-	#footer ul { float: right; color: #bbb; }
-		#footer li { display: inline; }
+	#footer a { color: #888; }
+		#footer a.current { color: #444; }
+	#footer ul { float: right; color: #bbb; margin-right: -5px; }
+		#footer li { display: inline; margin-left: 5px; }
+			#footer li a { margin-right: 5px; }
 /* Footer (end) */
 
 

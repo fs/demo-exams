@@ -1,22 +1,11 @@
-<<<<<<< HEAD:app/views/exams/_exam_full.html.erb
-<h2><%= exam_full.name %></h2>
-<%= exam_full.description %>
-<div>
-  Question count: <%= exam_full.question_count %><br />
-  Time limit: <%= exam_full.time_limit %>
-</div>
-<%= link_to 'Show', exam_full %>
-<%= link_to_if(current_user.admin?, 'Update', edit_exam_path(exam_full.id)) %>
-=======
-	<h1>Exam</h1>
-	<dl class="exams-list">
-		<dt><span><%= link_to_if(current_user.admin?, '[ <i>Update</i> ]', edit_exam_path(exam_full.id)) %></span><%= exam_full.name %></dt>
-		<dd>
-			<div><%= exam_full.description %></div>
-			<ul>
-				<li>Questions: <strong><%= exam_full.question_count %></strong><span>|</span></li>
-				<li>Time limit: <strong><%= exam_full.time_limit %> minutes</strong></li>
-			</ul>
-		</dd>
-	</dl>
->>>>>>> damirg/master:app/views/exams/_exam_full.html.erb
+		<h1>Examination</h1>
+		<dl class="exams-list">
+			<dt><span><%= link_to_if(current_user.admin?, '[ <i>Update</i> ]', edit_exam_path(exam_full.id)) {} %></span><%= exam_full.name %></dt>
+			<dd>
+				<div><%= exam_full.description %></div>
+				<ul>
+					<li>Questions:<strong><%= exam_full.question_count %></strong><span>|</span></li>
+					<li>Time limit:<strong><%= exam_full.time_limit %> minutes</strong></li>
+				</ul>
+			</dd>
+		</dl>

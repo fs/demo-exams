@@ -7,7 +7,7 @@
 					<%= form.text_field :email %>
 				</fieldset>
 				<div>
-					<button type="submit" onclick="if (window.hiddenCommit) { window.hiddenCommit.setAttribute('value', this.value); }else { hiddenCommit = document.createElement('input');hiddenCommit.type = 'hidden';hiddenCommit.value = this.value;hiddenCommit.name = this.name;this.form.appendChild(hiddenCommit); }this.setAttribute('originalValue', this.value);this.disabled = true;this.value='Please wait...';result = (this.form.onsubmit ? (this.form.onsubmit() ? this.form.submit() : false) : this.form.submit());if (result == false) { this.value = this.getAttribute('originalValue');this.disabled = false; }return result;">Reset password</button>
+					<button type="submit">Reset password</button>
 				</div>
 			<% end %>	
 		</div>

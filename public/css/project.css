@@ -83,17 +83,15 @@ a.button, button {
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
 }
-	a.button:focus, a.button:hover, button:focus, button:hover {
-		color: #000;
-		border: 1px solid #d1d1d1;
-		border-right-color: #b1b1b1;
-		border-bottom-color: #b1b1b1;
-	}
-	a.cancel, button.cancel { color: #D12F19; border-color: #fbc2c4; }
-		a.cancel:focus, a.cancel:hover, button.cancel:focus, button.cancel:hover { border-color: #f2b2b5; }
-	a.save, button.save { color: #529214; border-color: #bcdc9c; }
-		a.save:focus, a.save:hover, button.save:focus, button.save:hover { border-color: #b3d194; }
+	a.button:focus, a.button:hover, button:focus, button:hover { color: #000; border: 1px solid #d1d1d1; border-right-color: #b1b1b1; border-bottom-color: #b1b1b1; }
 	a.button img, button img { margin-right: 7px; }
+	a.cancel, button.cancel { color: #D12F19; border-color: #fbc2c4; }
+		a.cancel:focus, a.cancel:hover, button.cancel:focus, button.cancel:hover { color: #D12F19; border-color: #f2b2b5; }
+	a.save, button.save { color: #529214; border-color: #bcdc9c; }
+		a.save:focus, a.save:hover, button.save:focus, button.save:hover { color: #529214; border-color: #b3d194; }
+	a.skip, button.skip { color: #369; border-color: #b5daeb; }
+		a.skip img, button.skip img { margin: 0 0 0 7px; }
+		a.skip:focus, a.skip:hover, button.skip:focus, button.skip:hover { color: #369; border-color: #aad3e6; }
 
 input, select, textarea {
 	font: 12px/18px Tahoma, Georgia;
@@ -107,13 +105,14 @@ input, select, textarea {
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 }
-	input[type=checkbox] {
+	input[type=checkbox], input[type=radio] {
 		float: none !important;
 		width: 14px !important;
 		height: 14px !important;
 		margin: 0 7px 0 0 !important;
-		padding: 0 !important;	
+		padding: 0 !important;
 	}
+		input[type=radio] { background: #fff; border: 0; }
 	input[type=password]:focus, input[type=password]:hover, input[type=text]:focus, input[type=text]:hover, select:focus, select:hover, textarea:focus, textarea:hover {
 		color: #111;
 		background: #fff6d9;
@@ -122,6 +121,7 @@ input, select, textarea {
 	}
 	select { padding-right: 5px; }
 		option { padding-left: 7px; }
+	textarea { overflow: auto; }
 /* Global definitions (end) */
 
 
@@ -227,7 +227,7 @@ input, select, textarea {
 				#links span { color: #888; margin-right: 6px; }
 				#links a { color: #39C; margin-right: 7px; }
 					#links span a { margin: 0; }
-		#links p { float: right; color: #333; }
+		#links p { float: right; color: #222; }
 			#links p span { margin-left: 7px; }
 		#links img { margin-right: 10px; }
 
@@ -254,8 +254,8 @@ input, select, textarea {
 	.form a { float: left; margin-top: 4px; }
 
 .f-exam input, .f-exam textarea { width: 660px; }
-.f-exam button { width: 140px; }
-
+.f-exam button { width: 140px; margin-right: 8px; }
+.f-exam a.cancel { width: 118px; margin: 0;}
 
 .f-questions h2 { margin-top: 55px; }
 .f-questions .actions { padding: 0 0 20px 155px; overflow: hidden; _zoom: 1; }
@@ -270,10 +270,6 @@ input, select, textarea {
 
 fieldset.short input { width: 124px; text-align: center; }
 
-
-
-
-
 .errorExplanation {
 	background: #f5f2ed;
 	margin: 0 25px 25px;
@@ -282,62 +278,52 @@ fieldset.short input { width: 124px; text-align: center; }
 	-webkit-border-radius: 8px;
 	border-radius: 8px;
 }
-	.errorExplanation h2 { font: 18px/23px Tahoma; text-align: left; margin-bottom: 20px; }
+	.errorExplanation h2 {
+		font: 18px/23px Tahoma;
+		letter-spacing: 0;
+		margin: 3px 0 20px;
+	}
 	.errorExplanation p { margin: 0 0 10px; }
 	.errorExplanation ul { list-style: square outside; margin-left: 20px; }
 		.errorExplanation li { margin-top: 5px; }
 
-		
-		
-		
-		
-		
 .start-exam { margin: 20px 25px 0; }
 	.start-exam button { margin-right: 8px; }
 
 .exams-list { margin-bottom: -25px; }
 	.exams-list dt {
-		font: 18px Tahoma;
-		background: #FFF9D8 url(exam.png) 25px 50% no-repeat;
-		padding: 10px 25px 10px 55px;
-		border-top: 1px solid #ddd;
+		font: 18px/24px Tahoma;
+		color: #666;
+		background: #F8F0D8 url(exam.png) 35px 50% no-repeat;
+		padding: 11px 35px 11px 70px;
+		border-top: 1px solid #E4E3D7;
 		overflow: hidden;
 		_zoom: 1;
 	}
-		.exams-list dt.good { background-color: #E4F5D3; }
-		.exams-list dt.bad { background-color: #f1eae1; }
 		.exams-list dt a { text-decoration: none; border-bottom: 1px dotted #3671A1; }
 			.exams-list dt a:hover { border: 0; }
-		.exams-list dt span {
-			float: right;
-			font-size: 13px;
-			color: #444;
-			padding-top: 3px;
-			white-space: nowrap;
-		}
+		.exams-list dt span { float: right; font-size: 13px; white-space: nowrap; }
+				.exams-list dt span.count { font-size: 18px; }
+					.exams-list dt span.count img { margin-right: 10px; }
 			.exams-list dt span a { border: 0; }
 				.exams-list dt span i { font-style: normal; text-decoration: underline; }
 				.exams-list dt a:hover i { text-decoration: none; }
-	.exams-list dd { padding: 10px 25px 25px; }
-		.exams-list dd ul { font-size: 11px; color: #777; padding-top: 10px; }
+	.exams-list dd { padding: 11px 25px 25px; }
+		.exams-list dd ul { font-size: 12px; color: #888; padding-top: 10px; }
+			.exams-list dd ul.history { }
 			.exams-list dd li { display: inline; }
 				.exams-list dd li span { color: #bbb; margin: 0 7px 0 10px; }
+				.exams-list dd li strong { margin-left: 5px; }
 
-.exam { }
-	.exam .title { background: #F4F1E3 url(question.png) 25px 50% no-repeat; padding: 10px 25px 10px 55px; border-top: 1px solid #E8E1CB; }
-		.exam .title span { font-size: 22px; margin-right: 10px; }
-	.exam dl { margin-bottom: -20px; padding: 20px 25px 0; }
-		.exam dt { float: left; width: 40px; padding: 1px 0 15px; }
-		.exam dd {
-			_height: 1%;
-			padding-bottom: 20px;
-			overflow: hidden;
-			*zoom: 1;
-		}
-		.exam dt { clear: both; }
-	
-	
-	
+.exam .title { background: #F8F0D8 url(question.png) 35px 50% no-repeat; padding: 11px 35px 11px 70px; border-top: 1px solid #E4E3D7; }
+.exam .question { margin: 15px 35px 0; }
+	.exam dl, .exam  .submit { padding-bottom: 20px; overflow: hidden; _zoom: 1; }
+		.exam  .submit { padding: 0 0 0 35px; }
+			.exam  .submit button { margin-right: 8px; }
+		.exam dt { float: left; width: 35px; margin: 1px -35px 0 0; }
+		.exam dd { margin-left: 35px; }
+
+
 /* Footer (begin) */
 #footer {
 	height: 40px;
@@ -357,8 +343,7 @@ fieldset.short input { width: 124px; text-align: center; }
 
 
 @-moz-document url-prefix() {
+	a.button img { margin-top: -1px; }
 	button { padding: 4px 10px; }
 		button img { vertical-align: top; }
-		
-	a.button img { margin-top: -1px; }
 }

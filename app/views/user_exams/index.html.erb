@@ -1,15 +1,19 @@
-<h1>Your exams</h1>
-<% @user_exams.each do |user_exam| %>
-  <div class="exams">
-    <h6><%= user_exam.exam.name -%></h6>
-    <p><%= user_exam.exam.description -%></p>
-    <div>Finished count:<%= user_exam.finished_count %> </div>
-    <div>Created at:<%= user_exam.created_at %> &nbsp; Expired:<%= user_exam.expired? %> &nbsp; Finished:<%= user_exam.finished? %></div>
-    <div><%= user_exam.exam.question_count %> &nbsp; <%= user_exam.exam.time_limit %></div>
-    <% if user_exam.allow_answer? %>
-      <div>
-        <%=  link_to 'Continue ...', edit_user_question_path(user_exam.next_question) %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+		<h1>Your exams</h1>
+		<dl class="exams-list"><% @user_exams.each do |user_exam| %>
+			<dt><span class="count"><img src="/css/count.png" alt="Count" /><%= user_exam.finished_count %>/<%= user_exam.exam.question_count %></span><%= user_exam.exam.name -%></dt>
+			<dd>
+				<div><%= user_exam.exam.description -%></div>
+				<ul class="history">
+					<li>Created:<strong><%= user_exam.created_at %></strong><span>|</span></li>
+					<li>Expired:<strong><%= user_exam.expired? %></strong><span>|</span></li>
+					<li>Finished:<strong><%= user_exam.finished? %></strong></li>
+				</ul>
+				<ul>
+					<li>Questions:<strong><%= user_exam.exam.question_count %></strong><span>|</span></li>
+					<li>Time limit:<strong><%= user_exam.exam.time_limit %> minutes</strong></li>
+				</ul>
+				<% if user_exam.allow_answer? %><div>
+					<%=  link_to 'Continue ...', edit_user_question_path(user_exam.next_question) %>
+				</div><% end %>
+			<% end %></dd>
+		</dl>

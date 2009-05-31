@@ -1,4 +1,9 @@
-<% form_for @question do |form|%>
-  <%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
-  <%= form.submit 'Ok' %>
-<% end %>
+		<h1>New question</h1>
+		<div class="form login f-exam">
+			<% form_for @question do |form|%>
+<%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
+				<div>
+					<button class="save" type="submit"><img src="/css/save.png" alt="" />Create</button>
+				</div>
+			<% end %>
+		</div>

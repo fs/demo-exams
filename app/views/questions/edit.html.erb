@@ -1,4 +1,10 @@
-<% form_for @question do |form|%>
-  <%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
-  <%= form.submit 'Ok' %> or <%= link_to 'Cancel', exam_path(@question.exam) %>
-<% end %>
+		<h1>Question update</h1>
+		<div class="form login f-exam">
+			<% form_for @question do |form|%>
+<%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
+				<div>
+					<button class="save" type="submit"><img src="/css/save.png" alt="" />Save</button>
+					<%= link_to '<img src="/css/cancel.png" alt="" />Cancel', exam_path(@question.exam), :class => 'button cancel' %>
+				</div>
+			<% end %>
+		</div>

@@ -12,8 +12,8 @@
 					<li>Questions:<strong><%= user_exam.exam.question_count %></strong><span>|</span></li>
 					<li>Time limit:<strong><%= user_exam.exam.time_limit %> minutes</strong></li>
 				</ul>
-				<% if user_exam.allow_answer? %><div>
-					<%=  link_to 'Continue ...', edit_user_question_path(user_exam.next_question) %>
+				<% if user_exam.allow_answer? %><div class="submit">
+					<%= link_to 'Continue ...<img src="/css/skip.png" alt="" />', edit_user_question_path(user_exam.next_question), :class => 'button skip' %>
 				</div><% end %>
 			<% end %></dd>
 		</dl>

@@ -134,7 +134,6 @@ input, select, textarea {
 #layout, .messages span, #browsers p { -moz-box-shadow: 0 5px 30px #E6E5D9; -webkit-box-shadow: 0 5px 30px #E6E5D9; box-shadow: 0 5px 30px #E6E5D9; }
 
 #layout {
-	
 	width: 900px;
 	background: #faecc8 url(header.gif) 0 0 repeat-x;
 	margin: 0 auto;

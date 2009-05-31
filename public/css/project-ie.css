@@ -9,8 +9,6 @@
 h1 { *margin-bottom: 10px; }
 	h1 span img { *position: relative; *top: 3px; }
 
-
-/* Form elements */
 a.button { _height: 17px; _padding-top: 4px; }
 	a.cancel { padding-bottom: 2px; *padding-bottom: 3px; }
 button { _height: 26px; *padding-top: 2px; overflow: visible; }
@@ -20,14 +18,13 @@ a.button img, button img { position: relative; top: -1px; *top: 1px; }
 a.skip img, button.skip img { *position: static; }
 
 input { padding: 3px 7px 7px; }
-
-* html input { scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff', className = (className) ? (className) + ' type-'+type : (className) + 'type-'+type); }
-.form input.type-checkbox, .type-checkbox {
-	width: auto;
-	_margin: 0 7px 0 0;
-	padding: 0;
-	border: 0;
-}
+	* html input { scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff', className = (className) ? (className) + ' type-'+type : (className) + 'type-'+type); }
+		.form input.type-checkbox, .type-checkbox, .form input.type-radio, .type-radio {
+			width: auto;
+			_margin: 0 7px 0 0;
+			padding: 0;
+			border: 0;
+		}
 /* Global definitions (end) */
 
 

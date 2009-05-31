@@ -16,6 +16,7 @@ body {
 }
 
 fieldset, img { border: 0; }
+
 table, td { border-collapse: collapse; border-spacing: 0; }
 
 div { vertical-align: top; }
@@ -23,9 +24,11 @@ div { vertical-align: top; }
 ol, ul { list-style: none; }
 
 button, img, input, label, select, td { vertical-align: middle; }
+
 button, label { cursor: pointer; }
-	label { color: #777; }
-		label:hover { color: #000 !important; }
+
+label { color: #777; }
+	label:hover { color: #000 !important; }
 
 :active, :focus { outline: none; -moz-outline-style: none; }
 

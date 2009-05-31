@@ -91,12 +91,12 @@ a.button, button {
 	}
 	a.button img, button img { margin-right: 7px; }
 	a.cancel, button.cancel { color: #D12F19; border-color: #fbc2c4; }
-		a.cancel:focus, a.cancel:hover, button.cancel:focus, button.cancel:hover { color: #D12F19; border-color: #f2b2b5; }
+		a.cancel:focus, a.cancel:hover, button.cancel:focus, button.cancel:hover { color: #ab210f; border-color: #f2b2b5; }
 	a.save, button.save { color: #529214; border-color: #bcdc9c; }
-		a.save:focus, a.save:hover, button.save:focus, button.save:hover { color: #529214; border-color: #b3d194; }
+		a.save:focus, a.save:hover, button.save:focus, button.save:hover { color: #43790f; border-color: #b3d194; }
 	a.skip, button.skip { color: #369; border-color: #b5daeb; }
 		a.skip img, button.skip img { margin: 0 0 0 7px; }
-		a.skip:focus, a.skip:hover, button.skip:focus, button.skip:hover { color: #369; border-color: #aad3e6; }
+		a.skip:focus, a.skip:hover, button.skip:focus, button.skip:hover { color: #010461; border-color: #aad3e6; }
 
 input, select, textarea {
 	font: 12px/18px Tahoma, Georgia;
@@ -134,6 +134,7 @@ input, select, textarea {
 #layout, .messages span, #browsers p { -moz-box-shadow: 0 5px 30px #E6E5D9; -webkit-box-shadow: 0 5px 30px #E6E5D9; box-shadow: 0 5px 30px #E6E5D9; }
 
 #layout {
+	
 	width: 900px;
 	background: #faecc8 url(header.gif) 0 0 repeat-x;
 	margin: 0 auto;
@@ -271,6 +272,7 @@ input, select, textarea {
 	.form a { float: left; margin-top: 4px; }
 
 .f-exam input, .f-exam textarea { width: 660px; }
+	.f-exam textarea { max-width: 660px; min-width: 660px; }
 .f-exam button { width: 140px; margin-right: 8px; }
 .f-exam a.cancel { width: 118px; margin: 0;}
 
@@ -368,6 +370,14 @@ fieldset.short input { width: 124px; text-align: center; }
 		button img { vertical-align: top; }
 	.messages span, #browsers p { display: inline; padding-top: 8px; padding-bottom: 8px; }
 		.messages span, x:-moz-any-link, x:default, #browsers p, x:-moz-any-link, x:default { padding-top: 0; padding-bottom: 0; }
-
+}
+@media all and (-webkit-min-device-pixel-ratio:0) {
+a.button { padding-bottom: 2px; }
+button { padding-top: 2px; }
+a.button img, button img, h1 img, h2 img { position: relative; top: -1px; }
+a.save img, button.save img { top: -2px; }
+}
+@media all and (-webkit-min-device-pixel-ratio:0) {
+	body:nth-of-type(1) #layout, body:nth-of-type(1) .messages span, body:nth-of-type(1) #browsers p { -webkit-box-shadow: none;  }
 }
 /* Hacks (end) */

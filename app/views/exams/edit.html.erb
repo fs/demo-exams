@@ -1,19 +1,19 @@
-		<h1>Updating exam</h1>
-		<div class="form f-exam">
-			<% form_for @exam do |form| %>
-<%= render :partial => 'exam', :locals => {:form => form}  %>
-				<div class="f-questions">
-					<h2>Questions list</h2>
-					<ul class="actions">
-						<li><%= link_to 'Add Multi Answer Question', new_question_path(:exam_id => @exam.id, :single => false), :class => 'button' %></li>
-						<li><%= link_to 'Add Single Answer Question', new_question_path(:exam_id => @exam.id, :single => true), :class => 'button' %></li>
-					</ul>
-					<table>
-						<%= render :partial => '/questions/question_list', :collection => @exam.questions, :locals => {:form => form} %>
-					</table>
-				</div>
-				<div>
-					<button class="save" type="submit"><img src="/css/save.png" alt="" />Update</button>
-				</div>
-			<% end %>
-		</div>
+<h1>Updating exam</h1>
+<div class="form f-exam">
+  <% form_for @exam do |form| %>
+    <%= render :partial => 'exam', :locals => {:form => form}  %>
+    <div class="f-questions">
+      <h2>Questions list</h2>
+      <ul class="actions">
+        <li><%= link_to 'Add Multi Answer Question', new_question_path(:exam_id => @exam.id, :single => false), :class => 'button' %></li>
+        <li><%= link_to 'Add Single Answer Question', new_question_path(:exam_id => @exam.id, :single => true), :class => 'button' %></li>
+      </ul>
+      <table>
+        <%= render :partial => '/questions/question_list', :collection => @exam.questions, :locals => {:form => form} %>
+      </table>
+    </div>
+    <div>
+      <button class="save" type="submit"><img src="/css/save.png" alt="" />Update</button>
+    </div>
+  <% end %>
+</div>

@@ -1,26 +1,16 @@
-<div class='exam'>
-  <p>
-    Name:
-  </p>
-  <p>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.label :description, 'Description:'%>
-  </p>
-  <p>
-    <%= form.text_area :description %>
-  </p>
-  <p>
-    <%= form.label :time_limit, 'Time limitation:'%>
-  </p>
-  <p>
-    <%= form.text_field :time_limit %>
-  </p>
-  <p>
-    <%= form.label :question_count, 'Question number:'%>
-  </p>
-  <p>
-    <%= form.text_field :question_count %>
-  </p>
-</div>
+				<fieldset>
+					<%= form.label :name, 'Name' %>
+					<%= form.text_field :name %>
+				</fieldset>
+				<fieldset>
+					<%= form.label :description, 'Description'%>
+					<%= form.text_area :description %>
+				</fieldset>
+				<fieldset class="short">
+					<%= form.label :time_limit, 'Time limitation'%>
+					<%= form.text_field :time_limit %>
+				</fieldset>
+				<fieldset class="short">
+					<%= form.label :question_count, 'Question number'%>
+					<%= form.text_field :question_count %>
+				</fieldset>

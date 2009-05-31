@@ -1,22 +1,22 @@
 		<h1>Sign in</h1>
 		<div class="form login">
-		<% form_for :session, :url => session_path do |form| %>
-			<fieldset>
-				<%= form.label :email, 'Email address' %>
-				<%= form.text_field :email %>
-				<%= link_to "Sign up", new_user_path %>
-			</fieldset>
-			<fieldset>
-				<%= form.label :password %>
-				<%= form.password_field :password %>
-				<%= link_to "Forgot password?", new_password_path %>
-			</fieldset>
-			<p class="checkbox">
-				<%= form.check_box :remember_me %>
-				<%= form.label :remember_me %>
-			</p>
-			<div>
-				<button type="submit" onclick="if (window.hiddenCommit) { window.hiddenCommit.setAttribute('value', this.value); }else { hiddenCommit = document.createElement('input');hiddenCommit.type = 'hidden';hiddenCommit.value = this.value;hiddenCommit.name = this.name;this.form.appendChild(hiddenCommit); }this.setAttribute('originalValue', this.value);this.disabled = true;this.value='Please wait...';result = (this.form.onsubmit ? (this.form.onsubmit() ? this.form.submit() : false) : this.form.submit());if (result == false) { this.value = this.getAttribute('originalValue');this.disabled = false; }return result;">Submit</button>
-			</div>
-		<% end %>
+			<% form_for :session, :url => session_path do |form| %>
+				<fieldset>
+					<%= form.label :email, 'Email address' %>
+					<%= form.text_field :email %>
+					<%= link_to "Sign up", new_user_path %>
+				</fieldset>
+				<fieldset>
+					<%= form.label :password %>
+					<%= form.password_field :password %>
+					<%= link_to "Forgot password?", new_password_path %>
+				</fieldset>
+				<p class="checkbox">
+					<%= form.check_box :remember_me %>
+					<%= form.label :remember_me %>
+				</p>
+				<div>
+					<button type="submit" onclick="if (window.hiddenCommit) { window.hiddenCommit.setAttribute('value', this.value); }else { hiddenCommit = document.createElement('input');hiddenCommit.type = 'hidden';hiddenCommit.value = this.value;hiddenCommit.name = this.name;this.form.appendChild(hiddenCommit); }this.setAttribute('originalValue', this.value);this.disabled = true;this.value='Please wait...';result = (this.form.onsubmit ? (this.form.onsubmit() ? this.form.submit() : false) : this.form.submit());if (result == false) { this.value = this.getAttribute('originalValue');this.disabled = false; }return result;">Submit</button>
+				</div>
+			<% end %>
 		</div>

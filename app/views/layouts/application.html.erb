@@ -3,12 +3,12 @@
 <head>
 	<title>Flatsoft - Exams</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
-	<meta http-equiv="Content-Language" content="ru" />
+	<meta http-equiv="Content-Language" content="en" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="icon" type="image/x-icon" href="/favicon.ico" /> 
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-	<link rel="stylesheet" type="text/css" href="/css/project.css" />
-	<!--[if IE]><link rel="stylesheet" type="text/css" href="/css/project-ie.css" /><![endif]-->
+	<%= stylesheet_link_tag("project") %>
+	<!--[if IE]><%= stylesheet_link_tag("project-ie") %><![endif]-->
 </head>
 
 <body>
@@ -24,8 +24,8 @@
 </div>
 <div id="browsers">
 	<p>This site is best viewed
-		in <a href="http://mozilla-europe.org/ru/firefox/"><img src="/css/mozilla.png" alt="" /><span>Firefox</span></a>
-		or <a href="http://apple.com/safari/"><img src="/css/apple.gif" alt="" /><span>Safari</span></a> browsers.
+		in <a href="http://mozilla-europe.org/ru/firefox/"><%= image_tag("mozilla.png") %><span>Firefox</span></a>
+		or <a href="http://apple.com/safari/"><%= image_tag("apple.gif") %><span>Safari</span></a> browsers.
 	</p>
 </div>
 </body>

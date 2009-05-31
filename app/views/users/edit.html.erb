@@ -2,7 +2,7 @@
 <% form_for @user do |form| %>
   <%= render :partial => 'form', :object => form %>
   <div>
-    <button class="save" type="submit"><img src="/css/save.png" alt="" />Save</button>
-    <%= link_to '<img src="/css/cancel.png" alt="" />Cancel', root_path, :class => 'button cancel' %>
+    <button class="save" type="submit"><%= image_tag("save.png") %>Save</button>
+    <%= link_to '<img src="/images/cancel.png" alt="" />Cancel', root_path, :class => 'button cancel' %>
   </div>
 <% end %>

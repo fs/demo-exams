@@ -3,7 +3,7 @@
   <% form_for @exam do |form| %>
     <%= render :partial => 'exam', :locals => {:form => form}  %>
     <div>
-      <button class="save" type="submit"><img src="/css/add.png" alt="" />Create</button>
+      <button class="save" type="submit"><%= image_tag("add.png") %>Create</button>
     </div>
   <% end %>
 </div>

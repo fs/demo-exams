@@ -15,8 +15,8 @@
       <% end %>
     </div>
     <div class="submit">
-      <button class="save" type="submit"><img src="/css/save.png" alt="" />Answer</button>
-      <% unless @next_question.blank? %><%= link_to 'Skip question<img src="/css/skip.png" alt="" />', edit_user_question_path(@next_question), :class => 'button skip' %>
+      <button class="save" type="submit"><%= image_tag("save.png") %>Answer</button>
+      <% unless @next_question.blank? %><%= link_to 'Skip question<img src="/images/skip.png" alt="" />', edit_user_question_path(@next_question), :class => 'button skip' %>
       </div>
     <% end %><% end %>
 </div>

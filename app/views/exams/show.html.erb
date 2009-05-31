@@ -2,7 +2,7 @@
 <% form_for @user_exam do |form| %>
   <div class="start-exam">
     <%= form.hidden_field :exam_id %>
-    <button class="save" type="submit"><img src="/css/start.png" alt="" />Start exam</button>
-    <%= link_to '<img src="/css/cancel.png" alt="" />Cancel', :back, :class => 'button cancel' %>
+    <button class="save" type="submit"><%= image_tag("start.png") %>Start exam</button>
+    <%= link_to '<img src="/images/cancel.png" alt="" />Cancel', :back, :class => 'button cancel' %>
   </div>
 <% end %>

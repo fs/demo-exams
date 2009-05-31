@@ -3,8 +3,8 @@
   <% form_for @question do |form|%>
     <%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
     <div>
-      <button class="save" type="submit"><img src="/css/save.png" alt="" />Save</button>
-      <%= link_to '<img src="/css/cancel.png" alt="" />Cancel', exam_path(@question.exam), :class => 'button cancel' %>
+      <button class="save" type="submit"><%= image_tag("save.png") %>Save</button>
+      <%= link_to '<img src="/images/cancel.png" alt="" />Cancel', exam_path(@question.exam), :class => 'button cancel' %>
     </div>
   <% end %>
 </div>

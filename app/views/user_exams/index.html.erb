@@ -1,6 +1,6 @@
 <h1>Your exams</h1>
 <dl class="exams-list"><% @user_exams.each do |user_exam| %>
-    <dt><span class="count"><img src="/css/count.png" alt="Count" /><%= user_exam.finished_count %>/<%= user_exam.exam.question_count %></span><%= user_exam.exam.name -%></dt>
+    <dt><span class="count"><%= image_tag("count.png") %><%= user_exam.finished_count %>/<%= user_exam.exam.question_count %></span><%= user_exam.exam.name -%></dt>
     <dd>
       <div><%= user_exam.exam.description -%></div>
       <ul class="history">
@@ -13,7 +13,7 @@
         <li>Time limit:<strong><%= user_exam.exam.time_limit %> minutes</strong></li>
       </ul>
       <% if user_exam.allow_answer? %><div class="submit">
-        <%= link_to 'Continue<img src="/css/skip.png" alt="" />', edit_user_question_path(user_exam.next_question), :class => 'button skip' %>
+        <%= link_to 'Continue<img src="/images/skip.png" alt="" />', edit_user_question_path(user_exam.next_question), :class => 'button skip' %>
         </div><% end %>
   <% end %></dd>
 </dl>

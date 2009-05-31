@@ -3,20 +3,20 @@
 			<% form_for :session, :url => session_path do |form| %>
 				<fieldset>
 					<%= form.label :email, 'Email address' %>
-					<%= form.text_field :email %>
+					<%= form.text_field :email, :tabindex => '1' %>
 					<%= link_to "Sign up", new_user_path %>
 				</fieldset>
 				<fieldset>
 					<%= form.label :password %>
-					<%= form.password_field :password %>
+					<%= form.password_field :password, :tabindex => '2' %>
 					<%= link_to "Forgot password?", new_password_path %>
 				</fieldset>
 				<p class="checkbox">
-					<%= form.check_box :remember_me %>
+					<%= form.check_box :remember_me, :tabindex => '3' %>
 					<%= form.label :remember_me %>
 				</p>
 				<div>
-					<button type="submit">Submit</button>
+					<button type="submit" tabindex="4">Submit</button>
 				</div>
 			<% end %>
 		</div>

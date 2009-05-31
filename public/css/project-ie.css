@@ -4,24 +4,35 @@
 
 /* Hard CSS, protect from dummies */
 
+
 /* Global definitions (begin) */
 h1 { *margin-bottom: 10px; }
+	h1 span img { *position: relative; *top: 3px; }
 
 
 /* Form elements */
-button { _height: 26px; *padding-top: 2px; }
+a.button { _height: 17px; _padding-top: 4px; }
+	a.cancel { padding-bottom: 2px; *padding-bottom: 3px; }
+button { _height: 26px; *padding-top: 2px; overflow: visible; }
+	button.save { *padding-top: 1px; _padding-top: 2px; }
 
-input {
-	padding: 3px 7px 7px;
-	_scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff', className = (className) ? (className) + ' type-'+type : (className) + 'type-'+type);
+a.button img, button img { position: relative; top: -1px; *top: 1px; }
+a.skip img, button.skip img { *position: static; }
+
+input { padding: 3px 7px 7px; }
+
+* html input { scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff', className = (className) ? (className) + ' type-'+type : (className) + 'type-'+type); }
+.form input.type-checkbox, .type-checkbox {
+	width: auto;
+	_margin: 0 7px 0 0;
+	padding: 0;
+	border: 0;
 }
-
-.form input.type-checkbox { width: auto; _margin: 0 7px 0 0; padding: 0; border: 0; }
 /* Global definitions (end) */
 
 
 /* Header (begin) */
-.messages span, #browsers p {
+#browsers p {
 	*display: inline;
 	_height: 24px;
 	_padding-top: 8px;
@@ -35,11 +46,16 @@ input {
 
 
 /* Content (begin) */
+#content { *padding-bottom: 30px; }
+
 .form { *padding-top: 0; }
+
+.exams-list { *margin-top: 20px; }
 /* Content (end) */
 
 
 /* Footer (begin) */
+#footer ul { _margin-right: -2px; }
 /* Footer (end) */
 
 

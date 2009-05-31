@@ -1,0 +1,59 @@
+/*
+	Author: Damir Gubaydullin (FlatSoft LLC)
+*/
+
+/* Hard CSS, protect from dummies */
+
+/* Global definitions (begin) */
+h1 { *margin-bottom: 10px; }
+
+
+/* Form elements */
+button { _height: 26px; *padding-top: 2px; }
+
+input {
+	padding: 3px 7px 7px;
+	_scrollbar-face-color: expression(runtimeStyle.scrollbarFaceColor = '#fff', className = (className) ? (className) + ' type-'+type : (className) + 'type-'+type);
+}
+
+.form input.type-checkbox { width: auto; _margin: 0 7px 0 0; padding: 0; border: 0; }
+/* Global definitions (end) */
+
+
+/* Header (begin) */
+.messages span, #browsers p {
+	*display: inline;
+	_height: 24px;
+	_padding-top: 8px;
+	*zoom: 1;
+}
+
+#header div a:hover i { _display: none; }
+
+#links-inner { _height: 29px; _padding-top: 13px; }
+/* Header (end) */
+
+
+/* Content (begin) */
+.form { *padding-top: 0; }
+/* Content (end) */
+
+
+/* Footer (begin) */
+/* Footer (end) */
+
+
+/* HasLayout (begin) */
+h1,
+#content,
+.edit_user fieldset,
+.form fieldset,
+.form div,
+.f-questions .actions,
+.exams-list dt,
+.exams-list dd .submit,
+.exam dl,
+.exam  .submit,
+#footer { _zoom: 1; }
+.form div.fieldWithErrors { _zoom: normal; }
+/* HasLayout (end) */

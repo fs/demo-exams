@@ -40,7 +40,7 @@ a { color: #3671A1; text-decoration: underline; }
 
 /* Titles */
 h1 {
-	font: 27px/32px Arial;
+	font: 28px/33px Arial;
 	letter-spacing: -1px;
 	color: #222;
 	margin: 0 35px 20px;
@@ -57,10 +57,10 @@ h1 {
 			h1 span a, h1 span a:hover i { text-decoration: none; }
 		h1 span img { margin: 3px 7px 0 0; }
 h2 {
-	font: 22px/27px Tahoma;
-	color: #555;
-	text-align: center;
-	margin-bottom: 20px;
+	font: 25px/30px Arial; 
+	letter-spacing: -1px;
+	color: #444;
+	margin: 0 35px 20px;
 }
 	h2 img { margin-right: 10px; }
 
@@ -91,8 +91,8 @@ a.button, button {
 	}
 	a.cancel, button.cancel { color: #D12F19; border-color: #fbc2c4; }
 		a.cancel:focus, a.cancel:hover, button.cancel:focus, button.cancel:hover { border-color: #f2b2b5; }
-	button.save { color: #529214; border-color: #bcdc9c; }
-		button.save:focus, button.save:hover { border-color: #b3d194; }
+	a.save, button.save { color: #529214; border-color: #bcdc9c; }
+		a.save:focus, a.save:hover, button.save:focus, button.save:hover { border-color: #b3d194; }
 	a.button img, button img { margin-right: 7px; }
 
 input, select, textarea {
@@ -253,10 +253,25 @@ input, select, textarea {
 			.form div.fieldWithErrors label { color: #f00 !important; }
 	.form a { float: left; margin-top: 4px; }
 
-.f-exam input, .f-exam textarea { width: 650px; }
+.f-exam input, .f-exam textarea { width: 660px; }
 .f-exam button { width: 140px; }
 
+
+.f-questions h2 { margin-top: 55px; }
+.f-questions .actions { padding: 0 0 20px 155px; overflow: hidden; _zoom: 1; }
+	.f-questions .actions li { float: left; padding-right: 8px; }
+.f-questions table { width: 100%; margin-bottom: 20px; }
+	.f-questions th { width: 155px; text-align: center; padding: 15px 0; }
+		.f-questions th img { padding: 0 4px; }
+	.f-questions td { padding: 15px 60px 15px 0; }
+	.f-questions tr.even { background: #fafafa; }
+	.f-questions tr.odd { background: #F0F1F7; }
+	.f-questions table a { float: none; display: inline; margin: 0; }
+
 fieldset.short input { width: 124px; text-align: center; }
+
+
+
 
 
 .errorExplanation {
@@ -272,6 +287,11 @@ fieldset.short input { width: 124px; text-align: center; }
 	.errorExplanation ul { list-style: square outside; margin-left: 20px; }
 		.errorExplanation li { margin-top: 5px; }
 
+		
+		
+		
+		
+		
 .start-exam { margin: 20px 25px 0; }
 	.start-exam button { margin-right: 8px; }
 

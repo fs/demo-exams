@@ -1,8 +1,8 @@
-<div class="question">
-  Question <br/>
-    <p>
-      <%= question_list.question %>
-    </p>
-    <%= link_to 'Delete', question_path(question_list.id), :method => 'delete' %> | <%= link_to 'Edit', edit_question_path(question_list.id) %>
-</div>
-
+<tr class="<%= cycle("even", "odd") -%>">
+							<th>
+								<%= link_to '<img src="/css/pencil.png" alt="Edit" />', edit_question_path(question_list.id), :title => 'Edit' %>
+								<%= link_to '<img src="/css/remove.png" alt="Remove" />', question_path(question_list.id), :method => 'delete', :title => 'Remove' %>
+							</th>
+							<td><%= question_list.question %></td>
+						</tr>
+						

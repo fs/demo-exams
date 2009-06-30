@@ -1,0 +1,23 @@
+defaults: &defaults
+  app_name: Exams
+
+development:
+  <<: *defaults
+  host: tsweb.toa:3000
+  mails:
+    noreply: noreply@flatsoft.com
+    
+local:
+  <<: *defaults
+  host: localhost:3000
+
+test:
+  <<: *defaults
+  host: localhost:3000
+
+production:
+  <<: *defaults
+  host: exams.flatsoft.com
+  mails:
+    noreply: noreply@flatsoft.com
+

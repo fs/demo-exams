@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20090630113406) do
   create_table "questions", :force => true do |t|
     t.integer  "exam_id"
     t.text     "question"
-    t.string   "type"
+    t.string   "question_type"
     t.text     "answer_1"
     t.text     "answer_2"
     t.text     "answer_3"

@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  exam_id: 
+  question: MyText
+  type: MyString
+  answer_1: MyText
+  answer_2: MyText
+  answer_3: MyText
+  answer_4: MyText
+  answer_5: MyText
+
+two:
+  exam_id: 
+  question: MyText
+  type: MyString
+  answer_1: MyText
+  answer_2: MyText
+  answer_3: MyText
+  answer_4: MyText
+  answer_5: MyText

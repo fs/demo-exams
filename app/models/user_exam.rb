@@ -2,6 +2,7 @@ class UserExam < ActiveRecord::Base
   belongs_to :user
   belongs_to :exam
   has_many :user_answer
+
   validates_presence_of :user_id, :exam_id
 
   def expired?

@@ -1,0 +1,13 @@
+[20 Sep 07]
+
+* Remove ability to set defaults with defaults instance method. Too easy to override values from parameters.
+
+[25 Jul 07]
+
+* Using a symbol as a default value will cause the return value of the method with that name to be the default.
+
+* Documentation updates.
+
+[24 Nov 06]
+
+* Make plugin work with composed_of [Problem reported by Dan Kubb]

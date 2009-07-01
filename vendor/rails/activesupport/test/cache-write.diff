@@ -1,0 +1,43 @@
+From 3bcce2d9d06ae255632fc44f21e2d109469f6a1a Mon Sep 17 00:00:00 2001
+From: Timur Vafin <timur.vafin@flatsoft.com>
+Date: Tue, 30 Jun 2009 22:40:16 +0400
+Subject: [PATCH] Original cache objects should not be immutable
+
+---
+ .../lib/active_support/cache/memory_store.rb       |    2 +-
+ activesupport/test/caching_test.rb                 |    6 ++++++
+ 2 files changed, 7 insertions(+), 1 deletions(-)
+
+diff --git a/activesupport/lib/active_support/cache/memory_store.rb b/activesupport/lib/active_support/cache/memory_store.rb
+index 1b30d49..21ba79c 100644
+--- a/activesupport/lib/active_support/cache/memory_store.rb
++++ b/activesupport/lib/active_support/cache/memory_store.rb
+@@ -26,7 +26,7 @@ module ActiveSupport
+ 
+       def write(name, value, options = nil)
+         super
+-        @data[name] = value.freeze
++        @data[name] = (value.duplicable? ? value.dup : value).freeze
+       end
+ 
+       def delete(name, options = nil)
+diff --git a/activesupport/test/caching_test.rb b/activesupport/test/caching_test.rb
+index c2a0381..928af25 100644
+--- a/activesupport/test/caching_test.rb
++++ b/activesupport/test/caching_test.rb
+@@ -176,6 +176,12 @@ class MemoryStoreTest < ActiveSupport::TestCase
+     assert_raise(ActiveSupport::FrozenObjectError) { @cache.read('foo').gsub!(/.*/, 'baz') }
+     assert_equal 'bar', @cache.read('foo')
+   end
++
++  def test_original_store_objects_should_not_be_immutable
++    bar = 'bar'
++    @cache.write('foo', bar)
++    assert_nothing_raised { bar.gsub!(/.*/, 'baz') }
++  end
+ end
+ 
+ uses_memcached 'memcached backed store' do
+-- 
+1.6.0.2
+

@@ -3,13 +3,14 @@ class UserAnswer < ActiveRecord::Base
   belongs_to :question
   validates_presence_of :user_exam_id, :question_id, :correct
 
-  def answer!(*args)
+  # Set correct answer and updates user exams finished attributes
+  #
+  def answer!(answers)
     if !user_exam.expired? && !user_exam.finished?
-      correct = (args == question.answers_list)
-    end
-    if user_exam.user_answers.inject(true) {|result, answer| result && !answer.correct.nil?}
-      user_exam.finished_at = Time.now
-      user_exam.update
+      if answers.sort == question.answers_list
+        update_attribute(:correct, true)
+        user_exam.correct_answer!
+      end
     end
   end
 end

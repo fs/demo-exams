@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20090630113406) do
   create_table "user_exams", :force => true do |t|
     t.integer  "user_id"
     t.integer  "exam_id"
+    t.integer  "finished_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

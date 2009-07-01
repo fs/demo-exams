@@ -4,16 +4,25 @@ class UserExam < ActiveRecord::Base
   has_many :user_answers
   validates_presence_of :user_id, :exam_id
 
-  def self.start! (user, exam)
-    user_exam = self.create( :user_id => user.id, :exam_id => exam.id)
-    exam.questions.sort_by{ rand }[0...exam.question_count].each do |v|
-      user_exam.user_answers << UserAnswer.create(:user_exam => user_exam.id, :question_id => v.id)
+  class << self
+    def start! (user, exam)
+      base.transaction do
+        user_exam = user.exams << exam
+      end
+      prepare_questions(user_exam) if user_exam
+      user_exam
     end
-    user_exam
-  end
 
-  def answer!(question, *args)
-    question.correct = (args == question.answers_list)
+    private :new
+
+    def prepare_questions(user_exam)
+      transaction do
+      exam = user_exam.exam
+      exam.questions.sort_by{ rand }[0...exam.question_count].each do |question|
+        user_exam.user_answers.create(:question_id => question.id)
+        end
+      end
+    end
   end
 
   def expired?

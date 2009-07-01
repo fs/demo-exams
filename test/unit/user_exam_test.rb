@@ -52,4 +52,34 @@ class UserExamTest < ActiveSupport::TestCase
       assert_equal Time.new.change(:hour => 3), @user_exam.finished_at
     end
   end
+
+  context 'UserExam model associations' do
+    setup do
+      @user = Factory(:user)
+      @exam = Factory(:exam)
+      UserExam.start!(@user, @exam)
+      @user_exam_from_user = nil
+      @user.user_exams.each do |ue|
+        if ue.exam_id == @exam.id
+          @user_exam_from_user = ue
+          break
+        end
+      end
+      @user_exam_from_exam = nil 
+      @exam.user_exams.each do |ue|
+        if ue.user_id == @user.id
+          @user_exam_from_exam = ue
+          break
+        end
+      end
+    end
+
+    should 'User - UserExam - Exam associations is valid' do
+      assert_equal @user_exam_from_exam, @user_exam_from_user
+    end
+
+    should 'UserQuestions are filled with blank' do
+      assert_equal @exam.question_count, @user_exam_from_user.user_questions.length
+    end
+  end
 end

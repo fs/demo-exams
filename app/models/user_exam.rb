@@ -27,7 +27,6 @@ class UserExam < ActiveRecord::Base
       returning nil do |user_exam|
         transaction do
           user_exam = create(:exam_id => exam.id, :user_id => user.id)
-
           exam.questions.sort_by{ rand }[0...exam.question_count].each do |question|
             user_exam.questions << question
           end

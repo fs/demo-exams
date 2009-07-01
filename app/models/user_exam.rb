@@ -9,11 +9,11 @@ class UserExam < ActiveRecord::Base
 
   def expired?
     return false if finished?
-    return (self.created_at + exam.time_limit.minutes) < Time.now
+    return (created_at + exam.time_limit.minutes) < Time.now
   end
   
   def finished?
-    !self.finished_at.nil? && finished_count == exam.question_count
+    !finished_at.nil? && finished_count == exam.question_count
   end
 
   def correct_answer!

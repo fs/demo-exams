@@ -1,12 +1,15 @@
 class UserExam < ActiveRecord::Base
   belongs_to :user
   belongs_to :exam
-  has_many :user_answers
+
+  has_many :user_questions
+  has_many :questions, :through => :user_questions
 
   validates_presence_of :user_id, :exam_id
 
   def expired?
-    finished? ? false : (created_at + exam.time_limit.minutes) > Time.now
+    return false if finished?
+    return (created_at + exam.time_limit.minutes) > Time.now
   end
   
   def finished?
@@ -15,25 +18,19 @@ class UserExam < ActiveRecord::Base
 
   def correct_answer!
     increment(:finished_count)
-    update_attribute(:finished_at, Time.now) if finished_count == exam.question_count
+    self.finished_at = Time.now if finished_count == exam.question_count
+    save
   end
 
   class << self
-    def start! (user, exam)
-      base.transaction do
-        user_exam = user.exams << exam
-      end
-      prepare_questions(user_exam) if user_exam
-      user_exam
-    end
+    def start!(user, exam)
+      returning nil do |user_exam|
+        transaction do
+          user_exam = create(:exam_id => exam.id, :user_id => user.id)
 
-    private :new
-
-    def prepare_questions(user_exam)
-      transaction do
-        exam = user_exam.exam
-        exam.questions.sort_by{ rand }[0...exam.question_count].each do |question|
-          user_exam.user_answers.create(:question_id => question.id)
+          exam.questions.sort_by{ rand }[0...exam.question_count].each do |question|
+            user_exam.questions << question
+          end
         end
       end
     end

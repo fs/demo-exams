@@ -36,18 +36,19 @@ ActiveRecord::Schema.define(:version => 20090630113406) do
 
   add_index "questions", ["exam_id"], :name => "index_questions_on_exam_id"
 
-  create_table "user_answers", :force => true do |t|
-    t.integer  "user_exam_id"
-    t.integer  "question_id"
-    t.boolean  "correct"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "user_exams", :force => true do |t|
     t.integer  "user_id"
     t.integer  "exam_id"
     t.integer  "finished_count"
+    t.datetime "finished_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_questions", :force => true do |t|
+    t.integer  "user_exam_id"
+    t.integer  "question_id"
+    t.boolean  "correct"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

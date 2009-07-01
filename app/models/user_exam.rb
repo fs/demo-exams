@@ -13,7 +13,7 @@ class UserExam < ActiveRecord::Base
   end
   
   def finished?
-    !self.finished_at.nil?
+    !self.finished_at.nil? && finished_count == exam.question_count
   end
 
   def correct_answer!

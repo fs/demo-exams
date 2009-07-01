@@ -4,7 +4,7 @@ class CreateUserExams < ActiveRecord::Migration
       t.integer :user_id
       t.integer :exam_id
       t.integer :finished_count
-      t.timestamps :finished_at
+      t.datetime :finished_at
       t.timestamps
     end
   end

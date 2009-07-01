@@ -6,8 +6,4 @@ class Exam < ActiveRecord::Base
   validates_presence_of :name, :question_count, :time_limit
   validates_length_of :name, :within => 3..250
   validates_numericality_of :question_count, :time_limit
-
-  def start(user)
-    users << user
-  end
 end

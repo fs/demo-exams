@@ -1,2 +1,9 @@
 <h1>Exam choosing list</h1>
-<%= render(:partial => 'exam_item', :collection => @exams) %>
+
+<% @exams.each do |exam| %>
+  <%= render :partial => 'exam', :locals => {:exam => exam} %>
+  
+  <%= link_to 'Show', exam %>
+  <hr />
+<% end %>
+

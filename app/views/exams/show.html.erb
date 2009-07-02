@@ -1,6 +1,9 @@
-<%= render :partial => 'exam_item', :object => @exam_item %>
-<table id="exam_control">
-  <tr>
-    <td><%=  button_to "Start Exam", :controller => :user_exams, :action => 'create', :id => @exam_item.id-%></td>
-    <td><%=  link_to "Cancel", :back-%></td></tr>
-</table>
+<%= render @exam %>
+
+<% form_tag(user_exam_path) do %>
+  <%= submit_tag 'Start exam', :disable_with => 'Please wait...' %>
+<% end %>
+
+or
+
+<%= link_to 'Cancel', :back %>

@@ -1,17 +1,9 @@
 class ExamsController < ApplicationController
- before_filter :init_exams
-
   def index
-
+    @exams = Exam.all
   end
 
   def show
-    @exam_item = Exam.find(params[:id])
-  end
-
-  private
-
-  def init_exams
-    @exams = Exam.all
+    @exam = Exam.find(params[:id])
   end
 end

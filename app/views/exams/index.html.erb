@@ -1,7 +1,7 @@
 <h1>Exam choosing list</h1>
 
 <% @exams.each do |exam| %>
-  <%= render :partial => 'exam', :locals => {:exam => exam} %>
+  <%= render(exam) %>
   
   <%= link_to 'Show', exam %>
   <hr />

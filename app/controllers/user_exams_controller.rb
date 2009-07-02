@@ -1,21 +1,10 @@
 class UserExamsController < ApplicationController
-  before_filter :get_user
+  def index
+    @user_exams = current_user.user_exams
+  end
 
   def create
-      exam = Exam.find(params[:id])
-      redirect_to :action => 'index' if exam.nil?
-      user_exam = UserExam.start!(@current_user, exam)
-      redirect_to :controller => :user_questions, :action => 'edit', :id => user_exam.user_questions.first.id if user_exam
+    user_exam = UserExam.start!(current_user, Exam.find(params[:user_exam][:exam_id]))
+    redirect_to(edit_user_question_path(user_exam.user_questions.first))
   end
-
-  def index
-    @user_exams = @current_user.user_exams
-  end
-
-  private
-
-  def get_user
-    @current_user = User.first
-  end
-
 end

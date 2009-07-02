@@ -1,7 +1,7 @@
 namespace :db do
   desc "Populate User, Exam and Questions"
   task :populate => :environment do
-    raise 'You can run populator only on development env' if Rails.env != 'development'
+    raise 'You can run populator only on development env' unless Rails.env.development?
 
     require 'populator'
     require 'faker'

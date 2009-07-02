@@ -1,7 +1,6 @@
 Factory.define :user_exam do |user_exam|
   user_exam.association :user, :factory => :user
   user_exam.association :exam, :factory => :exam
-  user_exam.finished_count 0
 end
 
 Factory.define :user_exam_expired, :parent => :user_exam do |user_exam|

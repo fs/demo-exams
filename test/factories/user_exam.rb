@@ -1,6 +1,6 @@
 Factory.define :user_exam do |user_exam|
   user_exam.association :user, :factory => :user
-  user_exam.association :exam, :factory => :exam
+  user_exam.association :exam, :factory => :exam_with_questions
   user_exam.finished_count 0
 end
 
@@ -16,4 +16,12 @@ end
 
 Factory.define :user_exam_with_last_question, :parent => :user_exam do |user_exam|
   user_exam.finished_count 4
+end
+
+Factory.define :user_exam_without_questions, :parent => :user_exam do |user_exam|
+  user_exam.association :user, :factory => :user
+  user_exam.association :exam, :factory => :exam
+  user_exam.finished_count 0
+  user_exam.created_at 1.minutes.ago
+  user_exam.finished_at nil
 end

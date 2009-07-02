@@ -30,6 +30,13 @@ class UserQuestionTest < ActiveSupport::TestCase
       assert_equal @user_question.correct, true
       assert_equal @user_question.user_exam.finished_count, 1
     end
+
+    should 'answer returns nil if UserQuestion does not accept second answer on same question' do
+      @user_question.answer!([1])
+      assert_equal @user_question.correct, true
+      assert_equal @user_question.user_exam.finished_count, 1
+      assert @user_question.answer!([4]).nil?
+    end
   end
 end
 

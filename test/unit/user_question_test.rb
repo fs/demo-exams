@@ -5,7 +5,7 @@ class UserQuestionTest < ActiveSupport::TestCase
   should_belong_to :question
   should_validate_presence_of :user_exam_id, :question_id
 
-  context 'a user question instance' do
+  context 'a user question without answer' do
     setup do
       @user_question = Factory(:user_question)
     end
@@ -15,27 +15,44 @@ class UserQuestionTest < ActiveSupport::TestCase
       assert @user_question.correct
     end
 
-    should 'inc finished count with right answer' do
+    should 'save wrong answer' do
+      assert !@user_question.answer!([4])
+      assert !@user_question.correct
+    end
+  end
+
+  context 'a user question with answer' do
+    setup do
+      @user_question = Factory(:user_question_with_answer)
+    end
+
+    should 'not change correct answer' do
       @user_question.answer!([1])
-      assert_equal 1, @user_question.user_exam.finished_count
+      assert_equal true, @user_question.correct
+    end
+  end
+  
+  context 'a user question from expired exam' do
+    setup do
+      @user_question = Factory(:user_question_from_expired_exam)
     end
 
-    should 'inc finished count with wrong answer' do
-      @user_question.answer!([4])
-      assert_equal 1, @user_question.user_exam.finished_count
+
+    should 'not change correct answer' do
+      @user_question.answer!([1])
+      assert_equal nil, @user_question.correct
+    end
+  end
+
+  context 'a user question from finished exam' do
+    setup do
+      @user_question = Factory(:user_question_from_finished_exam)
     end
 
-    should 'not save correct answer' do
-      @user_question.answer!([4])
-      assert_equal false, @user_question.correct
-    end
 
-    should 'not change finished count when answering on question with existing answer' do
-      user_question = Factory(:user_question_with_answer)
-      user_question.answer!([1])
-
-      assert_equal 1, user_question.user_exam.finished_count
+    should 'not change correct answer' do
+      @user_question.answer!([1])
+      assert_equal nil, @user_question.correct
     end
   end
 end
-

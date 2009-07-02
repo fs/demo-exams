@@ -1,0 +1,9 @@
+<h1>Your exams</h1>
+<%  @user_exams.each do |exm|%>
+<div class="exams">
+  <h6><%= exm.exam.name -%></h6>
+  <p>><%= exm.exam.description-%></p>
+  <div><%=exm.finished_count%></div>
+  <div><%= exm.exam.question_count %>&nbsp;<%= exm.exam.time_limit%></div>
+</div>
+<%end%>

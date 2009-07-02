@@ -1,6 +1,6 @@
 <%= render :partial => 'exam_item', :object => @exam_item %>
 <table id="exam_control">
   <tr>
-    <td><%=  button_to "Start Exam"-%></td>
-    <td><%=  button_to "Cancel"-%></td></tr>
+    <td><%=  button_to "Start Exam", :controller => :user_exams, :action => 'create', :id => @exam_item.id-%></td>
+    <td><%=  link_to "Cancel", :back-%></td></tr>
 </table>

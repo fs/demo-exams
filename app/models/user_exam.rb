@@ -7,6 +7,8 @@ class UserExam < ActiveRecord::Base
 
   validates_presence_of :user_id, :exam_id
 
+  defaults :finished_count => 0
+
   def expired?
     return false if finished?
     return (created_at + exam.time_limit.minutes) < Time.now
@@ -24,15 +26,16 @@ class UserExam < ActiveRecord::Base
 
   class << self
     def start!(user, exam)
-      returning nil do |user_exam|
-        transaction do
-          user_exam = create(:exam_id => exam.id, :user_id => user.id)
+      user_exam = nil
 
-          exam.questions.sort_by{ rand }[0...exam.question_count].each do |question|
-            user_exam.questions << question
-          end
+      transaction do
+        user_exam = create(:exam_id => exam.id, :user_id => user.id)
+        exam.questions.sort_by{ rand }[0...exam.question_count].each do |question|
+          user_exam.questions << question
         end
       end
+
+      user_exam
     end
   end
 end

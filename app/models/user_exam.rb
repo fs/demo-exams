@@ -18,7 +18,7 @@ class UserExam < ActiveRecord::Base
     !finished_at.nil? && finished_count == exam.question_count
   end
 
-  def correct_answer!
+  def answer!
     increment(:finished_count)
     self.finished_at = Time.now if finished_count == exam.question_count
     save

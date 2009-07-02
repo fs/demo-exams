@@ -10,7 +10,7 @@ class UserQuestion < ActiveRecord::Base
 
     correct = answers.sort == question.answers_list
     update_attribute(:correct, correct)
-    user_exam.correct_answer!
+    user_exam.answer!
 
     correct
   end

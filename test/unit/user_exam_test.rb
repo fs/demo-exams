@@ -29,13 +29,13 @@ class UserExamTest < ActiveSupport::TestCase
 
     should 'update finished count' do
       finished_count = @user_exam.finished_count
-      @user_exam.correct_answer!
+      @user_exam.answer!
       assert_equal finished_count + 1, @user_exam.finished_count
     end
 
     should 'not update finished date' do
       finished_at = @user_exam.finished_at
-      @user_exam.correct_answer!
+      @user_exam.answer!
       assert_equal finished_at, @user_exam.finished_at
     end
   end
@@ -48,7 +48,7 @@ class UserExamTest < ActiveSupport::TestCase
     should 'change update finished date' do
       stub(Time).now { Time.new.change(:hour => 3) }
 
-      @user_exam.correct_answer!
+      @user_exam.answer!
       assert_equal Time.new.change(:hour => 3), @user_exam.finished_at
     end
   end

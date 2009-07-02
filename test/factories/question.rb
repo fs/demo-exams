@@ -8,3 +8,4 @@ Factory.define :question do |question|
   question.answer_5 'ans 5'
   question.answers_list [1]
 end
+

@@ -6,9 +6,13 @@ class UserQuestion < ActiveRecord::Base
   # Set correct answer and updates user exams finished attributes
   #
   def answer!(answers)
-    if !user_exam.expired? && !user_exam.finished? && correct.nil?
-        update_attribute(:correct, answers.sort == question.answers_list)
-        user_exam.correct_answer!
+    return false if (user_exam.expired? || user_exam.finished?) && correct.nil?
+
+    if answers.sort == question.answers_list
+      update_attribute(:correct, true)
+      user_exam.correct_answer!
     end
+
+    true
   end
 end

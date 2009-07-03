@@ -24,6 +24,13 @@ class UserExam < ActiveRecord::Base
     save
   end
 
+  #Returns next question for questions set in UserExam
+  #
+  def next_question(prev_user_question)
+    return user_questions.sort_by{|obj| obj.id}.first if prev_user_question.nil?
+    return user_questions.sort_by{|obj| obj.id}.select{|obj| obj.id > prev_user_question.id }.first
+  end
+
   class << self
     def start!(user, exam)
       user_exam = nil

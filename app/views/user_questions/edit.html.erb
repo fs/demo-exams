@@ -1,2 +1,11 @@
 <h1>UserQuestions</h1>
-<p><%=@user_question.question.question%></p>
+<div class="question">
+  <p><%= @user_question.question.question %></p>
+  <%form_tag user_questions_path + '/' + @user_question.id.to_s, :method => :put do%>
+    <%(1..5).each do |i|%>
+      <%ans_sym = ('answer_'+i.to_s).to_sym%>
+      <p><%=check_box_tag ans_sym, 1%> <%=@user_question.question.send(ans_sym)%></p>
+    <%end%>
+      <%=submit_tag 'Post answer'%>
+  <%end%>
+</div>

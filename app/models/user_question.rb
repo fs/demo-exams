@@ -14,4 +14,5 @@ class UserQuestion < ActiveRecord::Base
 
     correct
   end
+  
 end

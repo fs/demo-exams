@@ -31,8 +31,9 @@ class UserExam < ActiveRecord::Base
   #Returns next question for questions set in UserExam
   #
   def next_question(prev_user_question = nil)
-    return user_questions.sort_by{|obj| obj.id}.first if prev_user_question.nil?
-    return user_questions.sort_by{|obj| obj.id}.select{|obj| obj.id > prev_user_question.id }.first
+    unanswered_questions = user_questions.select{|user_question| user_question.correct.nil?}.sort_by{|obj| obj.id}
+    return unanswered_questions.first if prev_user_question.nil?
+    return (unanswered_questions.find{ |obj| obj.id > prev_user_question.id } || unanswered_questions.first)
   end
 
   class << self

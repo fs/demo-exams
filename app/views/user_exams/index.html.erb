@@ -1,10 +1,13 @@
 <h1>Your exams</h1>
-<%  @user_exams.each do |exm|%>
+<% @user_exams.each do |user_exam| %>
 <div class="exams">
-  <h6><%= exm.exam.name -%></h6>
-  <p>><%= exm.exam.description-%></p>
-  <div>Finished count:<%=exm.finished_count%>&nbsp;</div>
-  <div>Created at:<%=exm.created_at%>&nbsp;Expired:<%=exm.expired?%>&nbsp;Finished:<%=exm.finished?%></div>
-  <div><%= exm.exam.question_count %>&nbsp;<%= exm.exam.time_limit%></div>
+  <h6><%= user_exam.exam.name -%></h6>
+  <p>><%= user_exam.exam.description -%></p>
+  <div>Finished count:<%= user_exam.finished_count %> &nbsp; </div>
+  <div>Created at:<%= user_exam.created_at %> &nbsp; Expired:<%= user_exam.expired? %> &nbsp; Finished:<%= user_exam.finished? %></div>
+  <div><%= user_exam.exam.question_count %> &nbsp; <%= user_exam.exam.time_limit %></div>
+  <% if user_exam.allow_answer? %>
+    <%link_to 'Continue ...', edit_user_question_path(user_exam.next_question)%>
+  <% end %>
 </div>
-<%end%>
+<% end %>

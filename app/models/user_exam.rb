@@ -30,7 +30,7 @@ class UserExam < ActiveRecord::Base
 
   #Returns next question for questions set in UserExam
   #
-  def next_question(prev_user_question)
+  def next_question(prev_user_question = nil)
     return user_questions.sort_by{|obj| obj.id}.first if prev_user_question.nil?
     return user_questions.sort_by{|obj| obj.id}.select{|obj| obj.id > prev_user_question.id }.first
   end

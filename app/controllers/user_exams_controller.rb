@@ -6,6 +6,6 @@ class UserExamsController < ApplicationController
 
   def create
     user_exam = UserExam.start!(current_user, Exam.find(params[:user_exam][:exam_id]))
-    redirect_to(edit_user_question_path(user_exam.next_question(nil)))
+    redirect_to(edit_user_question_path(user_exam.next_question))
   end
 end

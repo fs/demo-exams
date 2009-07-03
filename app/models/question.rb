@@ -4,4 +4,8 @@ class Question < ActiveRecord::Base
   validates_length_of :question_type, :within => 3..250
   validates_inclusion_of :question_type, :in => %w{multi single}
   serialize :answers_list
+
+  def single?
+    question_type == 'single'
+  end
 end

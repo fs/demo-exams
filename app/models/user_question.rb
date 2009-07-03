@@ -6,13 +6,16 @@ class UserQuestion < ActiveRecord::Base
   # Returns true or false if answer is accepted or nil otherwise
   #
   def answer!(answers)
-    return false if user_exam.expired? || user_exam.finished? || !correct.nil?
+    return false if user_exam.expired? || user_exam.finished? || !allow_answer?
 
-    correct = answers.sort == question.answers_list
+    correct = answers.map(&:to_i).sort == question.answers_list
     update_attribute(:correct, correct)
     user_exam.answer!
 
     correct
   end
-  
+
+  def allow_answer?
+    correct.nil?
+  end
 end

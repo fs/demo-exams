@@ -1,7 +1,6 @@
 class UserExamsController < ApplicationController
   def index
     @user_exams = current_user.user_exams
-    
   end
 
   def create

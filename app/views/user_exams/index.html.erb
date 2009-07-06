@@ -2,14 +2,14 @@
 <% @user_exams.each do |user_exam| %>
   <div class="exams">
     <h6><%= user_exam.exam.name -%></h6>
-    <p>><%= user_exam.exam.description -%></p>
-    <div>Finished count:<%= user_exam.finished_count %> &nbsp; </div>
+    <p><%= user_exam.exam.description -%></p>
+    <div>Finished count:<%= user_exam.finished_count %> </div>
     <div>Created at:<%= user_exam.created_at %> &nbsp; Expired:<%= user_exam.expired? %> &nbsp; Finished:<%= user_exam.finished? %></div>
     <div><%= user_exam.exam.question_count %> &nbsp; <%= user_exam.exam.time_limit %></div>
-    <div>
-      <% if user_exam.allow_answer? %>
+    <% if user_exam.allow_answer? %>
+      <div>
         <%=  link_to 'Continue ...', edit_user_question_path(user_exam.next_question) %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 <% end %>

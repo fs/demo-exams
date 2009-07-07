@@ -1,7 +1,15 @@
 <div class="right-c">
   <% if signed_in? %>
-    <span class="username"> <%= current_user.name %></span> | <%= link_to 'Settings', edit_user_path(current_user) %> | <%= link_to 'Exit', session_path, :method => :delete -%>
+    <span class="username"> <%= current_user.name %></span>
+    |
+    <%= link_to_unless_current 'Settings', edit_user_path(current_user) do |name|
+      link_to 'Settings', edit_user_path(current_user), :class => 'current' 
+    end%>
+    |
+    <%= link_to 'Exit', session_path, :method => :delete %>
   <% else %>
-    <%= link_to 'Login', new_session_path -%>
+    <%= link_to_unless_current 'Login', new_session_path do |name|
+      link_to name, new_session_path, :class => 'current'
+    end -%>
   <% end %>
 </div>

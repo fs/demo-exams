@@ -1,7 +1,11 @@
 <div class="left-c">
   <% if signed_in? %>
-    <%= link_to 'Exams list', root_path %>
+    <%= link_to_unless_current 'Exams list', root_path do |name|
+     link_to 'Exams list', root_path, :class => 'current'
+    end%>
     |
-    <%= link_to 'Your Exams', user_exams_path %>
+    <%= link_to_unless_current 'Your Exams', user_exams_path do |name|
+     link_to 'Your Exams', user_exams_path, :class => 'current'
+    end%>
   <%  end %>
 </div>

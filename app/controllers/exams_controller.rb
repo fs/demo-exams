@@ -1,4 +1,6 @@
 class ExamsController < ApplicationController
+  before_filter :authenticate
+
   def index
     @exams = Exam.all
   end

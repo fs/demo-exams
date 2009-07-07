@@ -1,5 +1,5 @@
 class UserQuestionsController < ApplicationController
-  before_filter :load_user_question, :validate_question
+  before_filter :load_user_question, :validate_question, :authenticate
 
   def edit
   end

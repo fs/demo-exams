@@ -1,0 +1,10 @@
+<div class="my-forms">
+  <h2>Settings</h2>
+
+  <% form_for @user do |form| %>
+    <%= render :partial => '/users/form', :object => form, :locals => {:password_label => 'New password'} %>
+    <div class="submit-field">
+      <%= form.submit 'Submit', :disable_with => 'Please, wait...' %> или <%= link_to 'Disable', root_path %>
+    </div>
+  <% end %>
+</div>

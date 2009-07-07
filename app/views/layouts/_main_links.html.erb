@@ -1,0 +1,7 @@
+<div class="left-c">
+  <% if signed_in? %>
+    <%= link_to 'Exams list', root_path %>
+    |
+    <%= link_to 'Your Exams', user_exams_path %>
+  <%  end %>
+</div>

@@ -1,0 +1,7 @@
+<div class="right-c">
+  <% if signed_in? %>
+    <span class="username"> <%= current_user.name %></span> | <%= link_to 'Settings', edit_user_path(current_user) %> | <%= link_to 'Exit', session_path, :method => :delete -%>
+  <% else %>
+    <%= link_to 'Login', new_session_path -%>
+  <% end %>
+</div>

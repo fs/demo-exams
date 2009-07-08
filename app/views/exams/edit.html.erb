@@ -1,0 +1,23 @@
+<% form_for @exam, :action => 'update' do |form| %>
+  <p>
+    <%= form.label :name, 'Name:'%>
+  </p>
+  <p>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :description, 'Description:'%>
+  </p>
+  <p>
+    <%= form.text_field :description %>
+  </p>
+  <p>
+    <%= form.label :time_limit, 'Time limitation:'%>
+  </p>
+  <p>
+    <%= form.text_field :time_limit %>
+  </p>
+  <p>
+    <%= form.submit 'Update' %>
+  </p>
+<% end %>

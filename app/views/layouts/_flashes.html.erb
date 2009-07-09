@@ -1,5 +1,3 @@
-<div id="flash">
-  <% flash.each do |key, value| -%>
-    <div id="flash_<%= key -%>"><%= html_escape(value) %></div>
-  <% end -%>
+<div class="messages"><% flash.each do |key, value| -%>
+	<span><%= html_escape(value) %><i></i></span><% end -%>
 </div>

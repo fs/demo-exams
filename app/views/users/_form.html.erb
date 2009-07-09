@@ -1,17 +1,17 @@
-<%= form.error_messages %>
-<div class="text_field">
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-</div>
-<div class="text_field">
-  <%= form.label :email %>
-  <%= form.text_field :email %>
-</div>
-<div class="password_field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
-<div class="password_field">
-  <%= form.label :password_confirmation %>
-  <%= form.password_field :password_confirmation %>
-</div>
+		<%= form.error_messages %>
+		<fieldset>
+			<%= form.label :name, 'Full name' %>
+			<%= form.text_field :name %>
+		</fieldset>
+		<fieldset>
+			<%= form.label :email, 'Email' %>
+			<%= form.text_field :email %>
+		</fieldset>
+		<fieldset>
+			<%= form.label :password, 'New password' %>
+			<%= form.password_field :password %>
+		</fieldset>
+		<fieldset>
+			<%= form.label :password_confirmation, 'Confirm password' %>
+			<%= form.password_field :password_confirmation %>
+		</fieldset>

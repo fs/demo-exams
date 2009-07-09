@@ -2,7 +2,6 @@ class UsersController < Clearance::UsersController
   before_filter :load_user, :only => [:edit, :update]
 
   def edit
-    @page_title = 'Settings updating'
   end
 
   def update

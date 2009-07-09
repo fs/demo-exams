@@ -2,9 +2,9 @@
   <h2>Settings</h2>
 
   <% form_for @user do |form| %>
-    <%= render :partial => '/users/form', :object => form, :locals => {:password_label => 'New password'} %>
+    <%= render :partial => 'form', :object => form %>
     <div class="submit-field">
-      <%= form.submit 'Submit', :disable_with => 'Please, wait...' %> или <%= link_to 'Disable', root_path %>
+      <%= form.submit 'Submit', :disable_with => 'Please, wait...' %> or <%= link_to 'Cancel', root_path %>
     </div>
   <% end %>
 </div>

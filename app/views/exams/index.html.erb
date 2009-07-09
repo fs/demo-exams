@@ -1,8 +1,6 @@
-	<h1>Exam choosing list<span><%= link_to_if(current_user.admin?, 'Create new exam', new_exam_path) %></span></h1>
+	<h1><span><%= link_to_if(current_user.admin?, '<img src="/css/add.png" alt="" /><i>Create new exam</i>', new_exam_path) {} %></span>Exam choosing list</h1>
+	<dl class="exams-list">
 <% @exams.each do |exam| %>
-	<%= render(exam) %>
-  
-  <%= link_to 'Show', exam %>
-  <%= link_to_if(current_user.admin?, 'Update', edit_exam_path(exam.id)) %>
+<%= render(exam) %>
 <% end %>
-
+	</dl>

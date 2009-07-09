@@ -1,10 +1,8 @@
-<h2><%= exam.name %></h2>
-
-<%= exam.description %>
-
-<div>
-  Question count: <%= exam.question_count %><br />
-  Time limit: <%= exam.time_limit %>
-</div>
-
-<br />
+		<dt><span><%= link_to_if(current_user.admin?, '[ <i>Update</i> ]', edit_exam_path(exam.id)) {} %></span><%= link_to exam.name, exam %></dt>
+		<dd>
+			<div><%= exam.description %></div>
+			<ul>
+				<li>Questions: <strong><%= exam.question_count %></strong><span>|</span></li>
+				<li>Time limit: <strong><%= exam.time_limit %> minutes</strong></li>
+			</ul>
+		</dd>

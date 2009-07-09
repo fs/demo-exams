@@ -35,4 +35,3 @@ config.gem 'thoughtbot-factory_girl',
   :source  => "http://gems.github.com"
 config.gem 'rr',
   :version => '>=0.7.1'
- HOST = "localhost"

@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
   
+  protected
+
+  def authorize
+    unless current_user.admin?
+      flash[:error] = 'Access denied'
+      redirect_to(exams_path) && return
+    end
+  end
 end

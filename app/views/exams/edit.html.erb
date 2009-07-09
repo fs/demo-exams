@@ -1,18 +1,18 @@
 <% form_for @exam, :action => 'update' do |form| %>
   <p>
-    <%= form.label :name, 'Name:'%>
+    <%= form.label :name %>:
   </p>
   <p>
     <%= form.text_field :name %>
   </p>
   <p>
-    <%= form.label :description, 'Description:'%>
+    <%= form.label :description %>:
   </p>
   <p>
     <%= form.text_field :description %>
   </p>
   <p>
-    <%= form.label :time_limit, 'Time limitation:'%>
+    <%= form.label :time_limit %>:
   </p>
   <p>
     <%= form.text_field :time_limit %>

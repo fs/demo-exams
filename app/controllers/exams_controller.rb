@@ -1,6 +1,6 @@
 class ExamsController < ApplicationController
   before_filter :authenticate
-  before_filter :admin_action, :except => [:index, :show]
+  before_filter :authorize, :except => [:index, :show]
 
   def index
     @exams = Exam.all
@@ -27,11 +27,5 @@ class ExamsController < ApplicationController
   def update
     flash[:notice] = 'Could not update Exam' unless Exam.update(params[:id], params[:exam])
     redirect_to(exams_path)
-  end
-
-  private
-  
-  def admin_action
-    redirect_to(exams_path) && return unless current_user.admin?
   end
 end

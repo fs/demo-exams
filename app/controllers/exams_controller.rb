@@ -1,5 +1,6 @@
 class ExamsController < ApplicationController
   before_filter :authenticate
+  before_filter :admin_action, :except => [:index, :show]
 
   def index
     @exams = Exam.all
@@ -11,24 +12,26 @@ class ExamsController < ApplicationController
   end
 
   def new
-    return unless current_user.admin?
     @exam = Exam.new
   end
 
   def create
-    return unless current_user.admin?
     flash[:notice] = 'Could not create new Exam' unless Exam.create(params[:exam])
     redirect_to(exams_path)
   end
 
   def edit
-    return unless current_user.admin?
     @exam = Exam.find(params[:id])
   end
 
   def update
-    return unless current_user.admin?
     flash[:notice] = 'Could not update Exam' unless Exam.update(params[:id], params[:exam])
-    redirect_to exams_path
+    redirect_to(exams_path)
+  end
+
+  private
+  
+  def admin_action
+    redirect_to(exams_path) && return unless current_user.admin?
   end
 end

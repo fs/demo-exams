@@ -1,6 +1,6 @@
 class ExamsController < ApplicationController
   before_filter :authenticate
-  before_filter :authorize, :except => [:index, :show]
+  before_filter :admin_action, :except => [:index, :show]
 
   def index
     @exams = Exam.all

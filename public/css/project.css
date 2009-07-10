@@ -24,7 +24,8 @@ ol, ul { list-style: none; }
 
 button, img, input, label, select { vertical-align: middle; }
 button, label { cursor: pointer; }
-	label:hover { color: #000; }
+	label { color: #666; }
+		label:hover { color: #000; }
 
 :active, :focus { outline: none; -moz-outline-style: none; }
 
@@ -61,34 +62,58 @@ h2 {
 	text-align: center;
 	margin-bottom: 20px;
 }
+	h2 img { margin-right: 10px; }
+
 
 /* Form elements */
-button, a.button, input[type=password], input[type=submit], input[type=text], select, textarea {
+a.button, button {
+	float: left;
+	max-height: 30px;
 	font: 12px/18px Tahoma, Georgia;
 	color: #444;
-	background: #f7f7f7;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 1px 1px 1px #fff;
+	background: #fff url(button.gif) 0 100% repeat-x;
+	padding: 3px 10px;
+	border: 1px solid #ddd;
+	border-right-color: #bbb;
+	border-bottom-color: #bbb;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
+	a.button:focus, a.button:hover, button:focus, button:hover {
+		color: #000;
+		border: 1px solid #d1d1d1;
+		border-right-color: #b1b1b1;
+		border-bottom-color: #b1b1b1;
+	}
+	a.cancel, button.cancel { color: #D12F19; border-color: #fbc2c4; }
+		a.cancel:focus, a.cancel:hover, button.cancel:focus, button.cancel:hover { border-color: #f2b2b5; }
+	a.save, button.save { color: #529214; border-color: #bcdc9c; }
+		a.save:focus, a.save:hover, button.save:focus, button.save:hover { border-color: #b0d28f; }
+	a.button img, button img { margin-right: 7px; }
+
+input, select, textarea {
+	font: 12px/18px Tahoma, Georgia;
+	color: #444;
+	background: #f9f9f9;
 	padding: 5px 7px;
-	border: 1px solid #e3e3e3;
+	border: 1px solid #e4e4e4;
+	border-top-color: #c8c8c8;
+	border-left-color: #c8c8c8;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 }
-	button, a.button {
-		float: left;
-		font-weight: 700;
-		background: #fff url(button.gif) 0 100% repeat-x;
-		padding: 5px 10px;
-		-moz-border-radius: 7px;
-		-webkit-border-radius: 7px;
-		border-radius: 7px;
+	input[type=checkbox] {
+		float: none !important;
+		width: 14px !important;
+		height: 14px !important;
+		margin: 0 7px 0 0 !important;
+		padding: 0 !important;	
 	}
-		button:focus, button:hover, a.button:focus, a.button:hover { outline: none; border: 1px solid #ccc; }
-		button img, a.button img { margin-right: 7px; }
-		button.save, a.save { color: #529214; border-color: #bcdc9c; }
-			button.save:focus, button.save:hover, a.save:focus, a.save:hover { border-color: #b0d28f; }
-		button.cancel, a.cancel { color: #D12F19; border-color: #fbc2c4; }
-			button.cancel:focus, button.cancel:hover, a.cancel:focus, a.cancel:hover { border-color: #f2b2b5; }
-	input[type=checkbox] { width: 14px !important; height: 14px !important; background: #eee; }
 	input[type=password]:focus, input[type=password]:hover, input[type=text]:focus, input[type=text]:hover, select:focus, select:hover, textarea:focus, textarea:hover {
 		color: #111;
 		background: #fff6d9;
@@ -179,7 +204,7 @@ button, a.button, input[type=password], input[type=submit], input[type=text], se
 		#header div span { color: #777; }
 		#header div i {
 			position: absolute;
-			left: -21px;
+			left: -20px;
 			top: 6px;
 			display: none;
 			width: 11px;
@@ -189,20 +214,38 @@ button, a.button, input[type=password], input[type=submit], input[type=text], se
 		}
 			#header div a:hover i { display: block; }
 
-.edit_user { padding-top: 5px; }
-	.edit_user fieldset { padding: 0 25px 10px; overflow: hidden; _zoom: 1; }
-		.edit_user label {
+.edit_user, .form { padding-top: 5px; }
+	.form p { margin: 0 0 25px 25px; }
+	.edit_user fieldset, .form fieldset { padding-bottom: 10px; overflow: hidden; _zoom: 1; }
+		.edit_user label, .form label {
 			float: left;
-			width: 120px;
+			width: 140px;
 			text-align: right;
-			margin: 3px 18px 0 0;
+			margin: 4px 15px 0 0;
 		}
-		.edit_user input { width: 250px; }
-		.edit_user button { margin: 0 10px 0 163px; }
-	.edit_user .errorExplanation { margin: 0 25px 35px; }
-		.edit_user h2 { font-size: 13px; font-weight: bold; text-align: left; margin-bottom: 13px; }
-		.edit_user ul { list-style: square outside; margin: 10px 0 0 20px; }
-			.edit_user li { margin-bottom: 5px; }
+		.edit_user input, .form  input { float: left; width: 200px; margin-right: 15px; }
+		.form .checkbox { margin: 0 0 10px 155px; }
+			.form .checkbox label { float: none; width: auto; margin: 0; }
+		.edit_user button, .form button { width: 104px; margin: 0 8px 0 155px; }
+			.edit_user a.button { width: 82px; }
+			.form button { width: 216px; margin-right: 0; }
+	.form a { float: left; margin-top: 4px; }
+
+.errorExplanation {
+	background: #f5f2ed;
+	margin: 0 25px 25px;
+	padding: 17px 20px;
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+}
+	.errorExplanation h2 { font: 18px/23px Tahoma; text-align: left; margin-bottom: 20px; }
+	.errorExplanation p { margin: 0 0 10px; }
+	.errorExplanation ul { list-style: square outside; margin-left: 20px; }
+		.errorExplanation li { margin-top: 5px; }
+
+.start-exam { margin: 20px 25px 0; }
+	.start-exam button { margin-right: 8px; }
 
 .exams-list { margin-bottom: -25px; }
 	.exams-list dt {
@@ -233,14 +276,10 @@ button, a.button, input[type=password], input[type=submit], input[type=text], se
 				.exams-list dd li span { color: #bbb; margin: 0 7px 0 10px; }
 
 .exam { }
-	.exam .title {
-		background: #F4F1E3 url(question.png) 25px 50% no-repeat;
-		padding: 10px 25px 10px 65px;
-		border-top: 1px solid #E8E1CB;
-	}
-		.exam .title span { font-size: 22px; margin-right: 7px; }
+	.exam .title { background: #F4F1E3 url(question.png) 25px 50% no-repeat; padding: 10px 25px 10px 55px; border-top: 1px solid #E8E1CB; }
+		.exam .title span { font-size: 22px; margin-right: 10px; }
 	.exam dl { margin-bottom: -20px; padding: 20px 25px 0; }
-		.exam dt { float: left; width: 40px; padding: 3px 0 15px; }
+		.exam dt { float: left; width: 40px; padding: 1px 0 15px; }
 		.exam dd {
 			_height: 1%;
 			padding-bottom: 20px;
@@ -271,8 +310,9 @@ button, a.button, input[type=password], input[type=submit], input[type=text], se
 
 
 @-moz-document url-prefix() {
-	button { padding: 6px 10px; }
+	button { padding: 4px 10px; }
 		button img { vertical-align: top; }
-		button.save { padding-bottom: 4px; }
+		button.save { padding-bottom: 2px; }
+		button.start { padding-bottom: 3px; }
 	a.button img { margin-top: -1px; }
 }

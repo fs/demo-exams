@@ -1,10 +1,20 @@
-<h2><%= exam.name %></h2>
-
-<%= exam.description %>
-
-<div>
-  Question count: <%= exam.question_count %><br />
-  Time limit: <%= exam.time_limit %>
+<div class='exam'>
+  <p>
+   Name:
+  </p>
+  <p>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :description, 'Description:'%>
+  </p>
+  <p>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.label :time_limit, 'Time limitation:'%>
+  </p>
+  <p>
+    <%= form.text_field :time_limit %>
+  </p>
 </div>
-
-<br />

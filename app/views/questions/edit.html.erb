@@ -1,0 +1,4 @@
+<% form_for @question do |form|%>
+  <%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
+  <%= form.submit 'Ok' %> or <%= link_to 'Cancel', exam_path(@question.exam) %>
+<% end %>

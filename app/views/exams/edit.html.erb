@@ -1,22 +1,9 @@
-<% form_for @exam, :action => 'update' do |form| %>
-  <p>
-    <%= form.label :name, 'Name:'%>
-  </p>
-  <p>
-    <%= form.text_field :name %>
-  </p>
-  <p>
-    <%= form.label :description, 'Description:'%>
-  </p>
-  <p>
-    <%= form.text_field :description %>
-  </p>
-  <p>
-    <%= form.label :time_limit, 'Time limitation:'%>
-  </p>
-  <p>
-    <%= form.text_field :time_limit %>
-  </p>
+<% form_for @exam do |form| %>
+  <%= render :partial => 'exam', :locals => {:form => form}  %>
+  <%= link_to 'Add Multi Answer Question', new_question_path(:exam_id => @exam.id, :single => false) %>
+  |
+  <%= link_to 'Add Single Answer Question', new_question_path(:exam_id => @exam.id, :single => true) %>
+  <%= render :partial => '/questions/question_list', :collection => @exam.questions, :locals => {:form => form} %>
   <p>
     <%= form.submit 'Update' %>
   </p>

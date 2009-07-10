@@ -1,0 +1,8 @@
+<h2><%= exam_short.name %></h2>
+<%= exam_short.description %>
+<div>
+  Question count: <%= exam_short.question_count %><br />
+  Time limit: <%= exam_short.time_limit %>
+</div>
+<%= link_to 'Show', exam_short %>
+<%= link_to_if(current_user.admin?, 'Update', edit_exam_path(exam_short.id)) %>

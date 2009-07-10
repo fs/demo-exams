@@ -1,11 +1,5 @@
 <h1>Exam choosing list</h1>
 <%= link_to_if(current_user.admin?, 'Create new exam', new_exam_path) %>
-<% @exams.each do |exam| %>
-  <%= render(exam) %>
-  
-  <%= link_to 'Show', exam %>
-  <%= link_to_if(current_user.admin?, 'Update', edit_exam_path(exam.id)) %>
+<%= render :partial => 'exam_short', :collection => @exams %>
 <hr />
-
-<% end %>
 

@@ -1,0 +1,15 @@
+<%= form.label :question %>
+<%= form.text_area :question, :size => '30x10' %>
+<% (1..5).each do |i| %>
+  <p>
+  <%= form.label "answer_#{i}".to_sym %>
+  <%= form.text_area "answer_#{i}".to_sym, :size => '30x10' %>
+   <% if question.single? %>
+       <%= radio_button_tag('answers[]', i, question.right?(i), :id => "answers_#{i}") %>
+   <% else %>
+       <%= check_box_tag('answers[]', i, question.right?(i), :id => "answers_#{i}") %>
+   <% end %>
+  </p>
+<% end %>
+<%= form.hidden_field :question_type %>
+<%= form.hidden_field :exam_id %>

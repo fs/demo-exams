@@ -1,15 +1,23 @@
-<div class="right-c">
-  <% if signed_in? %>
-    <span class="username"> <%= current_user.name %></span>
-    |
-    <%= link_to_unless_current 'Settings', edit_user_path(current_user) do |name|
-      link_to 'Settings', edit_user_path(current_user), :class => 'current' 
-    end%>
-    |
-    <%= link_to 'Exit', session_path, :method => :delete %>
-  <% else %>
-    <%= link_to_unless_current 'Login', new_session_path do |name|
-      link_to name, new_session_path, :class => 'current'
-    end -%>
-  <% end %>
-</div>
+	<div id="header">
+		<ul>
+			<% if signed_in? %>
+			<li><i><img src="/css/user.png" alt="" /><span><%= current_user.name %></span>(<%= link_to 'Log out', session_path, :method => :delete %>)</i>|</li>			
+			<li>
+				<%= link_to_unless_current '<img src="/css/edit.png" alt="" /><span>Settings</span>', edit_user_path(current_user) do |name|
+					link_to '<img src="/css/edit.png" alt="" /><span>Settings</span>', edit_user_path(current_user), :class => 'current'
+				end%>|
+			</li>
+			<li>
+				<%= link_to_unless_current '<img src="/css/exams.png" alt="" /><span>Exams list</span>', root_path do |name|
+					link_to '<img src="/css/exams.png" alt="" /><span>Exams list</span>', root_path, :class => 'current'
+				end%>|
+			</li>
+			<li>
+				<%= link_to_unless_current '<img src="/css/stats.png" alt="" /><span>Your Exams</span>', user_exams_path do |name|
+					link_to '<img src="/css/stats.png" alt="" /><span>Your Exams</span>', user_exams_path, :class => 'current'
+				end%>
+			</li>
+			<% end %>
+		</ul>
+		<div><a href="/">FlatSoft<span> / Exams</span><i></i></a></div>
+	</div>

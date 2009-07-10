@@ -1,15 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
-<html>
-  <head>
-    <title>Examinating site</title>
-  </head>
-  <body>
-    <div id="main-menu">
-      <%= render :partial => 'layouts/flashes' %>
-      <%= render :partial => 'layouts/clearance' %>
-      <%= render :partial => 'layouts/main_links' %>
-    </div>
-    <%= yield %>
-  </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+<head>
+	<title>Flatsoft - Exams</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="ru" />
+	<link rel="icon" href="/favicon.ico" type="image/x-icon" /> 
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" type="text/css" href="/css/project.css" />
+	<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="/css/project-ie.css" /><![endif]-->
+</head>
+
+
+<body>
+<%= render :partial => 'layouts/flashes' %>
+<div id="content">
+<%= render :partial => 'layouts/clearance' %>
+<%= yield %>
+</div>
+<div id="footer">
+<%= render :partial => 'layouts/main_links' %>
+	<p>&copy; 2009 <a href="http://flatsoft.com" title="FlatSoft LLC">FlatSoft.com</a> &mdash; Ruby on Rails development.</p>
+</div>
+</body>
 </html>

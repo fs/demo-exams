@@ -1,5 +1,11 @@
-<h1>Exam choosing list</h1>
-<%= link_to_if(current_user.admin?, 'Create new exam', new_exam_path) %>
-<%= render :partial => 'exam_short', :collection => @exams %>
-<hr />
+<h1>
+  <span>
+  <%= link_to_if(current_user.admin?, '<img src="/css/add.png" alt="" /><i>Create new exam</i>', new_exam_path) {} %>
+  </span>
+  Exam choosing list
+</h1>
+<dl class="exams-list">
+  <%= link_to_if(current_user.admin?, 'Create new exam', new_exam_path) %>
+  <%= render :partial => 'exam_short', :collection => @exams %>
+</dl>
 

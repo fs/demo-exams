@@ -1,11 +1,18 @@
-<div class="left-c">
-  <% if signed_in? %>
-    <%= link_to_unless_current 'Exams list', root_path do |name|
-     link_to 'Exams list', root_path, :class => 'current'
-    end%>
-    |
-    <%= link_to_unless_current 'Your Exams', user_exams_path do |name|
-     link_to 'Your Exams', user_exams_path, :class => 'current'
-    end%>
-  <% end %>
-</div>
+	<ul>
+		<% if signed_in? %>
+		<li>
+			 <%= link_to_unless_current 'Settings', edit_user_path(current_user) do |name|
+				link_to 'Settings', edit_user_path(current_user), :class => 'current' 
+			end%> |
+		</li>
+		<li>
+			<%= link_to_unless_current 'Exams list', root_path do |name|
+				link_to 'Exams list', root_path, :class => 'current'
+			end%> |</li>
+		<li>
+			<%= link_to_unless_current 'Your Exams', user_exams_path do |name|
+				link_to 'Your Exams', user_exams_path, :class => 'current'
+			end%>
+		</li>
+		<% end %>
+	</ul>

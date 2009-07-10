@@ -8,10 +8,10 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+
   private
 
   def admin_action
     redirect_to(root_path) && return unless current_user.admin?
   end
-
 end

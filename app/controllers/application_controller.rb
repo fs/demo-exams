@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
   private
 
   def admin_action
-    redirect_to(root_path) && return unless current_user.admin?
+    unless current_user.admin?
+      flash[:error] = 'Access denied'
+      redirect_to(exams_path) && return
+    end
   end
 end

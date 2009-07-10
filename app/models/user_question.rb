@@ -8,7 +8,7 @@ class UserQuestion < ActiveRecord::Base
   def answer!(answers)
     return false if user_exam.expired? || user_exam.finished? || !allow_answer?
 
-    correct = answers.map(&:to_i).sort == question.answers_list
+    correct = (answers || []).map(&:to_i).sort == question.answers_list
     update_attribute(:correct, correct)
     user_exam.answer!
 

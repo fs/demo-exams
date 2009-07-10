@@ -5,6 +5,16 @@ class Question < ActiveRecord::Base
   validates_inclusion_of :question_type, :in => %w{multi single}
   serialize :answers_list
 
+  after_create do |record|
+    record.exam.question_count += 1
+    record.exam.save
+  end
+  
+  before_destroy do |record|
+    record.exam.question.count -= 1
+    record.exam.save
+  end
+  
   def single?
     question_type == 'single'
   end
@@ -14,19 +24,7 @@ class Question < ActiveRecord::Base
     return (answers_list.find_all{ |elem| elem == number}.size != 0)
   end
 
-  private
-
-  def before_save
-    answers_list.sort!
-  end
-
-  def after_validation_on_create()
-    exam.question_count = exam.question_count + 1
-    exam.save
-  end
-
-  def after_destroy()
-    exam.question_count = exam.question_count + 1
-    exam.save
+  def set_answers(arg)
+    self.answers_list = (arg || []).map(&:to_i).sort
   end
 end

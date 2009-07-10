@@ -26,7 +26,11 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    Question.delete(params[:id])
+    exam = Question.find(params[:id]).exam
+    if Question.delete(params[:id])
+      exam.question_count -= 1
+      exam.save
+    end
     redirect_to :back
   end
 

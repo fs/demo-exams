@@ -9,12 +9,13 @@ class Question < ActiveRecord::Base
     record.exam.question_count += 1
     record.exam.save
   end
-  
-  before_destroy do |record|
-    record.exam.question.count -= 1
-    record.exam.save
-  end
-  
+
+#  before_destroy do |record|
+#    exm = Exam.find(record.exam_id)
+#    exm.question_count -= 1
+#    exm.save
+#  end
+
   def single?
     question_type == 'single'
   end
@@ -27,4 +28,5 @@ class Question < ActiveRecord::Base
   def set_answers(arg)
     self.answers_list = (arg || []).map(&:to_i).sort
   end
+
 end

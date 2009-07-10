@@ -1,8 +1,8 @@
-<h2><%= exam_short.name %></h2>
-<%= exam_short.description %>
+<h2><%= exam_full.name %></h2>
+<%= exam_full.description %>
 <div>
-  Question count: <%= exam_short.question_count %><br />
-  Time limit: <%= exam_short.time_limit %>
+  Question count: <%= exam_full.question_count %><br />
+  Time limit: <%= exam_full.time_limit %>
 </div>
-<%= link_to 'Show', exam_short %>
-<%= link_to_if(current_user.admin?, 'Update', edit_exam_path(exam_short.id)) %>
+<%= link_to 'Show', exam_full %>
+<%= link_to_if(current_user.admin?, 'Update', edit_exam_path(exam_full.id)) %>

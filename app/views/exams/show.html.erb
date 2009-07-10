@@ -1,4 +1,4 @@
-<%= render :partial => 'exam_short', :object => @exam %>
+<%= render :partial => 'exam_full', :object => @exam %>
 <% form_for @user_exam do |form| %>
   <%= form.hidden_field :exam_id %>
   <%= form.submit 'Start exam', :disable_with => 'Please wait...' %> or <%= link_to 'Cancel', :back %>

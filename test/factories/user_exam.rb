@@ -25,3 +25,11 @@ Factory.define :user_exam_without_questions, :parent => :user_exam do |user_exam
   user_exam.created_at 1.minutes.ago
   user_exam.finished_at nil
 end
+
+Factory.define :user_exam_from_uncomplete_exam, :parent => :user_exam do |user_exam|
+  user_exam.association :user, :factory => :user
+  user_exam.association :exam, :factory => :exam_with_uncomplete_questions
+  user_exam.finished_count 0
+  user_exam.created_at 1.minutes.ago
+  user_exam.finished_at nil
+end

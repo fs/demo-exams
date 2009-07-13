@@ -55,4 +55,5 @@ class UserQuestionTest < ActiveSupport::TestCase
       assert_equal nil, @user_question.correct
     end
   end
+  
 end

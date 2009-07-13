@@ -15,7 +15,7 @@ class UserExam < ActiveRecord::Base
   end
   
   def finished?
-    !finished_at.nil? && finished_count == exam.question_count
+    !finished_at.nil? && ((finished_count == exam.question_count) || (finished_count == exam.questions.size))
   end
 
   def allow_answer?
@@ -24,7 +24,7 @@ class UserExam < ActiveRecord::Base
 
   def answer!
     increment(:finished_count)
-    self.finished_at = Time.now if finished_count == exam.question_count
+    self.finished_at = Time.now if ((finished_count == exam.question_count) || (finished_count == exam.questions.size))
     save
   end
 
@@ -35,7 +35,7 @@ class UserExam < ActiveRecord::Base
     return unanswered_questions.first if prev_user_question.nil?
     return (unanswered_questions.find{ |obj| obj.id > prev_user_question.id } || unanswered_questions.first)
   end
-
+  
   class << self
     # Starts examinating process and creates list of questions
     #
@@ -44,7 +44,8 @@ class UserExam < ActiveRecord::Base
 
       transaction do
         user_exam = create(:exam_id => exam.id, :user_id => user.id)
-        exam.questions.sort_by{ rand }[0...exam.question_count].each do |question|
+        question_count = (exam.question_count < exam.questions.size ? exam.question_count : exam.questions.size)
+        exam.questions.sort_by{ rand }[0...question_count].each do |question|
           user_exam.questions << question
         end
       end

@@ -3,7 +3,8 @@ class UserQuestion < ActiveRecord::Base
   belongs_to :question
   validates_presence_of :user_exam_id, :question_id
 
-  # Returns true or false if answer is accepted or nil otherwise
+  # Returns true if answer is accepted or false if question already answered or
+  # if exam expired or finished
   #
   def answer!(answers)
     return false if user_exam.expired? || user_exam.finished? || !allow_answer?

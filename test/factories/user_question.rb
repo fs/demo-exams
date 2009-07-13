@@ -17,4 +17,7 @@ Factory.define :user_question_from_finished_exam, :parent => :user_question do |
   user_question.association :user_exam, :factory => :user_exam_finished
 end
 
+Factory.define :user_question_from_uncomplete_exam, :parent => :user_question do |user_question|
+  user_question.association :user_exam, :factory => :user_exam_from_uncomplete_exam
+end
 

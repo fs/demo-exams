@@ -37,6 +37,8 @@ class UserExam < ActiveRecord::Base
   end
 
   class << self
+    # Starts examinating process and creates list of questions
+    #
     def start!(user, exam)
       user_exam = nil
 

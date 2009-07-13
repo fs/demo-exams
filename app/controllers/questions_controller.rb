@@ -26,11 +26,7 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    exam = Question.find(params[:id]).exam
-    if Question.delete(params[:id])
-      exam.question_count -= 1
-      exam.save
-    end
+    flash[:error] = 'Could not delete question' unless Question.delete(params[:id])
     redirect_to :back
   end
 

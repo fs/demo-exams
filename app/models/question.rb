@@ -5,26 +5,19 @@ class Question < ActiveRecord::Base
   validates_inclusion_of :question_type, :in => %w{multi single}
   serialize :answers_list
 
-  after_create do |record|
-    record.exam.question_count += 1
-    record.exam.save
-  end
-
-#  before_destroy do |record|
-#    exm = Exam.find(record.exam_id)
-#    exm.question_count -= 1
-#    exm.save
-#  end
-
   def single?
     question_type == 'single'
   end
 
+  # Returns true if given number of answer contains in right ansvers array
+  #
   def right?(number)
     return false if answers_list.nil?
     return (answers_list.find_all{ |elem| elem == number}.size != 0)
   end
 
+  # Converts POST array values to right format
+  #
   def set_answers(arg)
     self.answers_list = (arg || []).map(&:to_i).sort
   end

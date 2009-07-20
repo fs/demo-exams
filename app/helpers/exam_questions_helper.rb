@@ -1,2 +1,0 @@
-module ExamQuestionsHelper
-end

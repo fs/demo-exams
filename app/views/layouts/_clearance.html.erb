@@ -1,26 +1,15 @@
 <div id="header">
-  <% if signed_in? %><ul>
-      <li>
-        <%= link_to_unless_current '<img src="/images/edit.png" alt="" /><span>Settings</span>', edit_user_path(current_user) do |name|
-          link_to '<img src="/images/edit.png" alt="" /><span>Settings</span>', edit_user_path(current_user), :class => 'current'
-        end%><i>|</i>
-      </li>
-      <li>
-        <%= link_to_unless_current '<img src="/images/exams.png" alt="" /><span>Exams list</span>', root_path do |name|
-          link_to '<img src="/images/exams.png" alt="" /><span>Exams list</span>', root_path, :class => 'current'
-        end%><i>|</i>
-      </li>
-      <li>
-        <%= link_to_unless_current '<img src="/images/stats.png" alt="" /><span>Your Exams</span>', user_exams_path do |name|
-          link_to '<img src="/images/stats.png" alt="" /><span>Your Exams</span>', user_exams_path, :class => 'current'
-        end%>
-      </li>
-    </ul><% end %>
+  <%= render 'layouts/main_links', :with_logo => true %>
   <div><a href="/">FlatSoft<span> / Exams</span><i></i></a></div>
 </div>
 <div id="links">
   <div id="links-inner">
-    <div>Some text or a <a href="#">link</a></div>
-    <% if signed_in? %><p><%= image_tag("user.png") %><%= current_user.name %><span>(<%= link_to 'Log out', session_path, :method => :delete %>)</span></p><% end %>
+    <% if signed_in? %>
+      <p>
+        <%= image_tag('user.png') %>
+        <%= current_user.name %>
+        <span>(<%= link_to 'Log out', session_path, :method => :delete %>)</span>
+      </p>
+    <% end %>
   </div>
 </div>

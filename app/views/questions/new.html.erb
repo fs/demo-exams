@@ -1,9 +1,9 @@
 <h1>New question</h1>
 <div class="form f-exam">
-  <% form_for @question do |form|%>
-    <%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
+  <% form_for(@question) do |form|%>
+    <%= render :partial => 'question', :object => @question, :locals => {:form => form} %>
     <div>
-      <button class="save" type="submit"><img src="/images/save.png" alt="" />Create</button>
+      <button class="save" type="submit"><%= image_tag('save.png') %>Create</button>
     </div>
   <% end %>
 </div>

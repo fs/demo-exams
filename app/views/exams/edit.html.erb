@@ -9,11 +9,11 @@
         <li><%= link_to 'Add Single Answer Question', new_question_path(:exam_id => @exam.id, :single => true), :class => 'button' %></li>
       </ul>
       <table>
-        <%= render :partial => '/questions/question_list', :collection => @exam.questions, :locals => {:form => form} %>
+        <%= render :partial => 'questions/question_list', :collection => @exam.questions, :locals => {:form => form} %>
       </table>
     </div>
     <div>
-      <button class="save" type="submit"><%= image_tag("save.png") %>Update</button>
+      <button class="save" type="submit"><%= image_tag('save.png') %>Update</button>
     </div>
   <% end %>
 </div>

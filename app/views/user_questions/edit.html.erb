@@ -1,6 +1,8 @@
 <h1>Question</h1>
 <div class="exam">
-  <% form_for @user_question do |form| %>
+
+  <% form_for(@user_question) do |form| %>
+    
     <div class="title"><%= @user_question.question.question %></div>
     <div class="question">
       <% (1..5).each do |i| %>
@@ -10,13 +12,17 @@
               <%= radio_button_tag('answers[]', i, false, :id => "answers_#{i}") %><% else %>
               <%= check_box_tag('answers[]', i, false, :id => "answers_#{i}") %><% end %>
           </dt>
-          <dd><label for="<%=  "answers_#{i}" %>"><%= @user_question.question.send("answer_#{i}".to_sym) %></label></dd>
+          <dd><label for="<%= "answers_#{i}" %>"><%= @user_question.question.send("answer_#{i}".to_sym) %></label></dd>
         </dl>
       <% end %>
     </div>
     <div class="submit">
       <button class="save" type="submit"><%= image_tag("save.png") %>Answer</button>
-      <% unless @next_question.blank? %><%= link_to 'Skip question<img src="/images/skip.png" alt="" />', edit_user_question_path(@next_question), :class => 'button skip' %>
-      </div>
-    <% end %><% end %>
+      
+      <% unless @next_question.blank? %>
+        <%= link_to 'Skip question<img src="/images/skip.png" alt="" />', edit_user_question_path(@next_question), :class => 'button skip' %>
+      <% end %>
+    </div>
+
+  <% end %>
 </div>

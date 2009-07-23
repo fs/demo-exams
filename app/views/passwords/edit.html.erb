@@ -1,6 +1,6 @@
 <h1>Password confirmation</h1>
 <div class="form">
-  <% form_for(:user, :url => user_password_path(@user, :token    => @user.token), :html => { :method => :put }) do |form| %>
+  <% form_for(:user, :url => user_password_path(@user, :token => @user.token), :html => { :method => :put }) do |form| %>
     <p>Your password has been reset. Choose a new password below.</p>
     <%= error_messages_for :user %>
     <fieldset>

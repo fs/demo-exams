@@ -3,6 +3,9 @@
   <%= render :partial => 'form', :object => form %>
   <div>
     <button class="save" type="submit"><%= image_tag("save.png") %>Save</button>
-    <%= link_to '<img src="/images/cancel.png" alt="" />Cancel', root_path, :class => 'button cancel' %>
+    <% link_to(root_path, :class => 'button cancel') do %>
+      <%= image_tag('cancel.png') %>
+      Cancel
+    <% end %>
   </div>
 <% end %>

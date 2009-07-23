@@ -1,32 +1,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<title>Flatsoft - Exams</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
-	<meta http-equiv="Content-Language" content="en" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" /> 
-	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-	<%= stylesheet_link_tag("project") %>
-	<!--[if IE]><%= stylesheet_link_tag("project-ie") %><![endif]-->
-</head>
+  <head>
+    <title>Flatsoft - Exams</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="Content-Language" content="en" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <%= stylesheet_link_tag('project') %>
+    <!--[if IE]><%= stylesheet_link_tag('project-ie') %><![endif]-->
+  </head>
 
-<body>
-<%= render :partial => 'layouts/flashes' %>
-<div id="layout">
-<%= render :partial => 'layouts/clearance' %>
-	<div id="content">
-<%= yield %>
-	</div>
-	<div id="footer">
-<%= render :partial => 'layouts/main_links' %>
-	</div>
-</div>
-<div id="browsers">
-	<p>This site is best viewed
-		in <a href="http://mozilla-europe.org/ru/firefox/"><%= image_tag("mozilla.png") %><span>Firefox</span></a>
-		or <a href="http://apple.com/safari/"><%= image_tag("apple.gif") %><span>Safari</span></a> browsers.
-	</p>
-</div>
-</body>
+  <body>
+    <%= render 'layouts/flashes' %>
+    <div id="layout">
+      <%= render 'layouts/clearance' %>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <div id="footer">
+        <%= render 'layouts/main_links', :with_logo => false %>
+        <p>&copy; 2009 <a href="http://flatsoft.com" title="FlatSoft LLC">FlatSoft.com</a> &mdash; Ruby on Rails development.</p>
+      </div>
+    </div>
+    <div id="browsers">
+      <p>This site is best viewed
+        in <a href="http://mozilla-europe.org/ru/firefox/"><%= image_tag("mozilla.png") %><span>Firefox</span></a>
+        or <a href="http://apple.com/safari/"><%= image_tag("apple.gif") %><span>Safari</span></a> browsers.
+      </p>
+    </div>
+  </body>
 </html>

@@ -1,10 +1,14 @@
 <h1>Question update</h1>
 <div class="form f-exam">
-  <% form_for @question do |form|%>
+  <% form_for(@question) do |form|%>
     <%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
     <div>
-      <button class="save" type="submit"><%= image_tag("save.png") %>Save</button>
-      <%= link_to '<img src="/images/cancel.png" alt="" />Cancel', exam_path(@question.exam), :class => 'button cancel' %>
+      <button class="save" type="submit"><%= image_tag('save.png') %>Save</button>
+      
+      <% link_to exam_path(@question.exam), :class => 'button cancel' do %>
+        <%= image_tag('cancel.png') %>
+        Cancel
+      <% end %>
     </div>
   <% end %>
 </div>

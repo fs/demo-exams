@@ -1,4 +1,4 @@
-<dt><span><%= link_to_if(current_user.admin?, '[ <i>Update</i> ]', edit_exam_path(exam_short.id)) {} %></span><%= link_to exam_short.name, exam_short %></dt>
+<dt><span><%= link_to_if(current_user.admin?, '[ <i>Update</i> ]', edit_exam_path(exam_short.id)) {} %></span><%= link_to(exam_short.name, exam_short) %></dt>
 <dd>
   <div><%= exam_short.description %></div>
   <ul>

@@ -4,12 +4,12 @@
     <fieldset>
       <%= form.label :email, 'Email address' %>
       <%= form.text_field :email, :tabindex => '1' %>
-      <%= link_to "Sign up", new_user_path %>
+      <%= link_to 'Sign up', new_user_path %>
     </fieldset>
     <fieldset>
       <%= form.label :password %>
       <%= form.password_field :password, :tabindex => '2' %>
-      <%= link_to "Forgot password?", new_password_path %>
+      <%= link_to 'Forgot password?', new_password_path %>
     </fieldset>
     <p class="checkbox">
       <%= form.check_box :remember_me, :tabindex => '3' %>

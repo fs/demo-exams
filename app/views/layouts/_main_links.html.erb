@@ -1,17 +1,15 @@
-		<% if signed_in? %><ul>
-			<li>
-				 <%= link_to_unless_current 'Settings', edit_user_path(current_user) do |name|
-					link_to 'Settings', edit_user_path(current_user), :class => 'current' 
-				end%> |
-			</li>
-			<li>
-				<%= link_to_unless_current 'Exams list', root_path do |name|
-					link_to 'Exams list', root_path, :class => 'current'
-				end%> |</li>
-			<li>
-				<%= link_to_unless_current 'Your Exams', user_exams_path do |name|
-					link_to 'Your Exams', user_exams_path, :class => 'current'
-				end%>
-			</li>
-		</ul><% end %>
-		<p>&copy; 2009 <a href="http://flatsoft.com" title="FlatSoft LLC">FlatSoft.com</a> &mdash; Ruby on Rails development.</p>
+<% if signed_in? %>
+  <ul>
+    <li>
+      <%= main_menu_item('Settings', edit_user_path(current_user), 'edit.png', with_logo) %>
+      |
+    </li>
+    <li>
+      <%= main_menu_item('Exams list', root_path, 'exams.png', with_logo) %>
+      |
+    </li>
+    <li>
+      <%= main_menu_item('Your Exams', user_exams_path, 'stats.png', with_logo) %>
+    </li>
+  </ul>
+<% end %>

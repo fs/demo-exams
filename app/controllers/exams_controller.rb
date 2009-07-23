@@ -16,8 +16,12 @@ class ExamsController < ApplicationController
   end
 
   def create
-    flash[:notice] = 'Could not create new Exam' unless Exam.create(params[:exam])
-    redirect_to(exams_path)
+    if exam = Exam.create(params[:exam])
+      flash[:notice] = 'New Exam succesfully created'
+    else
+      flash[:error] = 'Could not create new Exam' 
+    end
+    redirect_to(edit_exam_path(exam.id))
   end
 
   def edit
@@ -25,8 +29,12 @@ class ExamsController < ApplicationController
   end
 
   def update
-    flash[:notice] = 'Could not update Exam' unless Exam.update(params[:id], params[:exam])
-    redirect_to(exams_path)
+    if Exam.update(params[:id], params[:exam])
+      flash[:notice] = 'Exam successfully updated'
+    else
+      flash[:erorr] = 'Could not update Exam' 
+    end
+    redirect_to :back
   end
 
 end

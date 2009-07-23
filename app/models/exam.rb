@@ -3,6 +3,7 @@ class Exam < ActiveRecord::Base
   has_many :user_exams
   has_many :users, :through => :user_exams
   
+  #Number of questions needed for user examinating
   defaults :question_count => 0
 
   validates_presence_of :name, :question_count, :time_limit

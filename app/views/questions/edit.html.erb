@@ -4,7 +4,7 @@
     <%=render :partial => 'question', :object => @question, :locals => {:form => form}%>
     <div>
       <button class="save" type="submit"><%= image_tag('save.png') %>Save</button>
-      
+      <%= link_to 'Change question type', :action => 'change_type' %>
       <% link_to exam_path(@question.exam), :class => 'button cancel' do %>
         <%= image_tag('cancel.png') %>
         Cancel

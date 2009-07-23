@@ -9,8 +9,12 @@ class QuestionsController < ApplicationController
   def create
     question = Question.create(params[:question])
     question.set_answers(params[:answers])
-    flash[:notice] = 'Exam Question does not created' unless question.save
-    redirect_to exam_path(params[:question][:exam_id])
+    if question.save
+      flash[:notice] = 'Exam Question successfully created'
+    else
+      flash[:error] = 'Exam Question does not created'
+    end
+    redirect_to edit_exam_path(params[:question][:exam_id])
   end
 
   def edit
@@ -21,12 +25,30 @@ class QuestionsController < ApplicationController
     question = Question.find(params[:id])
     question.attributes = params[:question]
     question.set_answers(params[:answers])
-    flash[:notice] = 'Exam Question does not updated' unless question.save
-    redirect_to exam_path(params[:question][:exam_id])
+    if question.save
+      flash[:notice] = 'Exam Question successfully updated'
+    else
+      flash[:error] = 'Exam Question does not updated'
+    end
+    redirect_to edit_exam_path(params[:question][:exam_id])
+  end
+
+  def change_type
+    question = Question.find(params[:id])
+    if question.change_type.save
+      flash[:notice] = 'Question type changed successfully'
+    else
+      flash[:error] = 'Question type could not be changed'
+    end
+    redirect_to :back
   end
 
   def destroy
-    flash[:error] = 'Could not delete question' unless Question.delete(params[:id])
+    if Question.delete(params[:id])
+      flash[:notice] = 'Exam Question deleted successfully'
+    else
+      flash[:error] = 'Could not delete Exam Question'
+    end
     redirect_to :back
   end
 

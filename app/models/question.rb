@@ -22,4 +22,13 @@ class Question < ActiveRecord::Base
     self.answers_list = (arg || []).map(&:to_i).sort
   end
 
+  def change_type()
+    awailable = get_awailable_types*2
+    self.question_type = awailable[awailable.index(question_type) + 1]
+    return self
+  end
+
+  def get_awailable_types
+    return ['multi', 'single']
+  end
 end

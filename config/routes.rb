@@ -3,6 +3,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :user_exams
   map.resources :user_questions
   map.resources :users
-  map.resources :questions
+  map.resources :questions, :member => { :change_type => [:get] }
   map.root :exams
 end

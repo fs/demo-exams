@@ -2,33 +2,38 @@ class Question < ActiveRecord::Base
   belongs_to :exam
   validates_presence_of :question, :question_type
   validates_length_of :question_type, :within => 3..250
-  validates_inclusion_of :question_type, :in => %w{multi single}
-  serialize :answers_list
+  validates_inclusion_of :question_type, :in => %w{single multiple}
+  validate :answers_present
+  validate :correct_answers_present
+  serialize :correct_answers
 
   def single?
     question_type == 'single'
   end
 
-  # Returns true if given number of answer contains in right ansvers array
-  #
-  def right?(number)
-    return false if answers_list.nil?
-    return (answers_list.find_all{ |elem| elem == number}.size != 0)
+  def correct_answer?(number)
+    correct_answers.to_a.map(&:to_i).include?(number)
+  end
+  
+  def correct_answers?(answers)
+    correct_answers.to_a.map(&:to_i).sort == answers.to_a.map(&:to_i).sort
   end
 
-  # Converts POST array values to right format
-  #
-  def set_answers(arg)
-    self.answers_list = (arg || []).map(&:to_i).sort
+  def change_type!
+    update_attribute :question_type, single? ? 'multiple' : 'single'
   end
-
-  def change_type()
-    awailable = get_awailable_types*2
-    self.question_type = awailable[awailable.index(question_type) + 1]
-    return self
+  
+  private
+  
+  def answers_present
+    if answer_1.blank? && answer_2.blank? && answer_3.blank? && answer_4.blank? && answer_5.blank?
+      errors.add_to_base 'Please specify at least one answer'
+    end
   end
-
-  def get_awailable_types
-    return ['multi', 'single']
+  
+  def correct_answers_present
+    if correct_answers.blank?
+      errors.add_to_base 'Please specify at least one correct answer'
+    end
   end
 end

@@ -1,32 +1,37 @@
 class UserQuestionsController < ApplicationController
-  before_filter :load_user_question, :validate_question, :authenticate
+  before_filter :find_question, :authenticate
 
   def edit
   end
 
   def update
-    @user_question.answer!(params[:answers])
-    redirect_to_next_question
+    if @question.update_attributes :answers => params[:answers]
+      redirect_to_next_question
+    else
+      flash[:notice] = @question.errors.full_messages.join('<br />')
+      redirect_to edit_user_question_path(@question)
+    end
   end
 
   private
 
-  def load_user_question
-    @user_question = UserQuestion.find(params[:id])
-    @next_question = @user_question.user_exam.next_question(@user_question)
-  end
-
-  def validate_question
-    unless @user_question.user_exam.allow_answer?
-      flash[:error] = 'This exam expired or finished'
-      redirect_to(user_exams_path) && return
+  def find_question
+    @question = UserQuestion.find(params[:id])
+    @next_question = @question.next
+    
+    if !@question.user_exam.allow_answer?
+      flash[:error] = 'This attempt is no longer valid'
+      redirect_to user_exams_path
+    elsif !@question.allow_answer?
+      redirect_to_next_question
     end
-
-    redirect_to_next_question unless @user_question.allow_answer?
   end
 
   def redirect_to_next_question
-    redirect_to(user_exams_path) && return if @next_question.nil?
-    redirect_to(edit_user_question_path(@next_question)) && return
+    if @next_question.nil?
+      redirect_to user_exams_path
+    else
+      redirect_to edit_user_question_path(@next_question)
+    end
   end
 end

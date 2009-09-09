@@ -1,8 +1,8 @@
 Factory.define :exam do |exam|
   exam.name 'Git basics'
   exam.description 'Git basics'
-  exam.question_count 5
   exam.time_limit 10
+  exam.questions_per_attempt 5
 end
 
 Factory.define :exam_with_questions, :parent => :exam do |exam|

@@ -1,15 +1,16 @@
 <h1>Password confirmation</h1>
+
 <div class="form">
-  <% form_for(:user, :url => user_password_path(@user, :token => @user.token), :html => { :method => :put }) do |form| %>
+  <% form_for(:user, :url => user_password_path(@user, :token => @user.token), :html => { :method => :put }) do |f| %>
     <p>Your password has been reset. Choose a new password below.</p>
-    <%= error_messages_for :user %>
+    <%= f.error_messages %>
     <fieldset>
-      <%= form.label :password, "New password" %>
-      <%= form.password_field :password %>
+      <%= f.label :password, 'New password' %>
+      <%= f.password_field :password %>
     </fieldset>
     <fieldset>
-      <%= form.label :password_confirmation, "Confirm password" %>
-      <%= form.password_field :password_confirmation %>
+      <%= f.label :password_confirmation, 'Confirm password' %>
+      <%= f.password_field :password_confirmation %>
     </fieldset>
     <div>
       <button type="submit">Save and continue</button>

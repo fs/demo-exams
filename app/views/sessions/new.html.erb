@@ -1,22 +1,22 @@
 <h1>Sign in</h1>
 <div class="form">
-  <% form_for :session, :url => session_path do |form| %>
+  <% form_for :session, :url => session_path do |f| %>
     <fieldset>
-      <%= form.label :email, 'Email address' %>
-      <%= form.text_field :email, :tabindex => '1' %>
+      <%= f.label :email, 'E-mail address' %>
+      <%= f.text_field :email, :tabindex => '1' %>
       <%= link_to 'Sign up', new_user_path %>
     </fieldset>
     <fieldset>
-      <%= form.label :password %>
-      <%= form.password_field :password, :tabindex => '2' %>
+      <%= f.label :password %>
+      <%= f.password_field :password, :tabindex => '2' %>
       <%= link_to 'Forgot password?', new_password_path %>
     </fieldset>
     <p class="checkbox">
-      <%= form.check_box :remember_me, :tabindex => '3' %>
-      <%= form.label :remember_me %>
+      <%= f.check_box :remember_me, :tabindex => '3' %>
+      <%= f.label :remember_me %>
     </p>
     <div>
-      <button type="submit" tabindex="4">Submit</button>
+      <%= save_button_tag 'Log in' %>
     </div>
   <% end %>
 </div>

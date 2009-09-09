@@ -1,21 +1,33 @@
 class UserExam < ActiveRecord::Base
+  defaults :finished_count => 0
+  
   belongs_to :user
   belongs_to :exam
-
   has_many :user_questions
   has_many :questions, :through => :user_questions
 
   validates_presence_of :user_id, :exam_id
-
-  defaults :finished_count => 0
+  
+  before_create :generate_questions
 
   def expired?
-    return false if finished?
-    return (created_at + exam.time_limit.minutes) < Time.now
+    !finished? && created_at < exam.time_limit.minutes.ago
+  end
+  
+  def time_left
+    (exam.time_limit.minutes - (Time.now - created_at)).to_i
   end
   
   def finished?
-    !finished_at.nil? && ((finished_count == exam.question_count) || (finished_count == exam.questions.size))
+    !finished_at.nil? && all_questions_answered?
+  end
+  
+  def passed?
+    finished? && !user_questions.exists?(:correct => false)
+  end
+  
+  def all_questions_answered?
+    finished_count == exam.questions_count
   end
 
   def allow_answer?
@@ -23,34 +35,18 @@ class UserExam < ActiveRecord::Base
   end
 
   def answer!
-    increment(:finished_count)
-    self.finished_at = Time.now if ((finished_count == exam.question_count) || (finished_count == exam.questions.size))
+    self.finished_count += 1
+    self.finished_at = Time.now if all_questions_answered?
     save
   end
 
-  #Returns next question for questions set in UserExam
-  #
-  def next_question(prev_user_question = nil)
-    unanswered_questions = user_questions.select{|user_question| user_question.correct.nil?}.sort_by{|obj| obj.id}
-    return unanswered_questions.first if prev_user_question.nil?
-    return (unanswered_questions.find{ |obj| obj.id > prev_user_question.id } || unanswered_questions.first)
+  def current_question
+    user_questions.incomplete.first
   end
+    
+  private
   
-  class << self
-    # Starts examinating process and creates list of questions
-    #
-    def start!(user, exam)
-      user_exam = nil
-
-      transaction do
-        user_exam = create(:exam_id => exam.id, :user_id => user.id)
-        question_count = (exam.question_count < exam.questions.size ? exam.question_count : exam.questions.size)
-        exam.questions.sort_by{ rand }[0...question_count].each do |question|
-          user_exam.questions << question
-        end
-      end
-
-      user_exam
-    end
+  def generate_questions
+    self.questions = exam.questions.sort_by {rand}[0, exam.questions_count]
   end
 end

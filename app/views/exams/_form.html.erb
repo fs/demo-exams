@@ -1,0 +1,16 @@
+<fieldset>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+</fieldset>
+<fieldset>
+  <%= f.label :description %>
+  <%= f.text_area :description, :size => '30x15' %>
+</fieldset>
+<fieldset class="short">
+  <%= f.label :questions_per_attempt %>
+  <%= f.text_field :questions_per_attempt %>
+</fieldset>
+<fieldset class="short">
+  <%= f.label :time_limit, 'Time limit' %>
+  <%= f.text_field :time_limit %> minutes
+</fieldset>

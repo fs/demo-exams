@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
   attr_accessible :name
 
   defaults :admin => false
+  
+  def taken?(exam)
+    user_exams.find_all_by_exam_id(exam.id).any?(&:finished?)
+  end
+  
+  def passed?(exam)
+    user_exams.find_all_by_exam_id(exam.id).any?(&:passed?)
+  end
 end

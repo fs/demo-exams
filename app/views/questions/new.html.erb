@@ -1,9 +1,11 @@
 <h1>New question</h1>
+
 <div class="form f-exam">
-  <% form_for(@question) do |form|%>
-    <%= render :partial => 'question', :object => @question, :locals => {:form => form} %>
+  <% form_for [@exam, @question] do |f| %>
+    <%= render 'form', :f => f %>
     <div>
-      <button class="save" type="submit"><%= image_tag('save.png') %>Create</button>
+      <%= add_button_tag %>
+      <%= cancel_button_tag(edit_exam_path(@exam)) %>
     </div>
   <% end %>
 </div>

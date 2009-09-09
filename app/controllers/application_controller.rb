@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def admin_action
+  def require_admin
     unless current_user.admin?
       flash[:error] = 'Access denied'
-      redirect_to(exams_path) && return
+      redirect_to root_path
     end
   end
 end

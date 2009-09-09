@@ -6,6 +6,6 @@ Factory.define :question do |question|
   question.answer_3 'ans 3'
   question.answer_4 'ans 4'
   question.answer_5 'ans 5'
-  question.answers_list [1]
+  question.correct_answers [1]
 end
 

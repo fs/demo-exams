@@ -315,6 +315,8 @@ fieldset.short input { width: 124px; text-align: center; }
 		border-top: 1px solid #e1e0d5;
 		overflow: hidden;
 	}
+	.exams-list dt.taken { background-color: #d8f0f8; }
+	.exams-list dt.passed { background-color: #ccf8cc; }
 		.exams-list dt a { text-decoration: none; border-bottom: 1px dotted #3671A1; }
 			.exams-list dt a:hover { border: 0; }
 		.exams-list dt span { float: right; font-size: 13px; white-space: nowrap; }
@@ -376,3 +378,7 @@ a.save img, button.save img { top: -2px; }
 body:nth-of-type(1) #layout, body:nth-of-type(1) .messages span, body:nth-of-type(1) #browsers p { -webkit-box-shadow: none;  }
 }
 /* Hacks (end) */
+
+div.clear {
+  clear: both;
+}

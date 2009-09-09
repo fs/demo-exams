@@ -2,12 +2,11 @@ class UserExamsController < ApplicationController
   before_filter :authenticate
 
   def index
-    @user_exams = current_user.user_exams
+    @exams = current_user.user_exams.all(:order => 'updated_at DESC')
   end
 
   def create
-    authenticate && return if current_user.nil?
-    user_exam = UserExam.start!(current_user, Exam.find(params[:user_exam][:exam_id]))
-    redirect_to(edit_user_question_path(user_exam.next_question))
+    @exam = current_user.user_exams.create(params[:user_exam])
+    redirect_to edit_user_question_path(@exam.current_question)
   end
 end

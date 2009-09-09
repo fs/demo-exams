@@ -1,11 +1,9 @@
 <h1>Your settings</h1>
-<% form_for @user do |form| %>
-  <%= render :partial => 'form', :object => form %>
+
+<% form_for @user do |f| %>
+  <%= render 'form', :f => f %>
   <div>
-    <button class="save" type="submit"><%= image_tag("save.png") %>Save</button>
-    <% link_to(root_path, :class => 'button cancel') do %>
-      <%= image_tag('cancel.png') %>
-      Cancel
-    <% end %>
+    <%= save_button_tag %>
+    <%= cancel_button_tag(root_path) %>
   </div>
 <% end %>

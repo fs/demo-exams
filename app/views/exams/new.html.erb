@@ -1,9 +1,10 @@
 <h1>New exam</h1>
 <div class="form f-exam">
-  <% form_for(@exam) do |form| %>
-    <%= render 'exam', :form => form %>
+  <% form_for(@exam) do |f| %>
+    <%= render 'form', :f => f %>
     <div>
-      <button class="save" type="submit"><%= image_tag('add.png') %>Create</button>
+      <%= add_button_tag %>
+      <%= cancel_button_tag(exams_path) %>
     </div>
   <% end %>
 </div>

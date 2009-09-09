@@ -11,12 +11,12 @@ class UserQuestionTest < ActiveSupport::TestCase
     end
 
     should 'save corect answer' do
-      assert @user_question.answer!([1])
+      assert @user_question.update_attributes(:answers => [1])
       assert @user_question.correct
     end
 
     should 'save wrong answer' do
-      assert !@user_question.answer!([4])
+      assert @user_question.update_attributes(:answers => [4])
       assert !@user_question.correct
     end
   end
@@ -27,7 +27,7 @@ class UserQuestionTest < ActiveSupport::TestCase
     end
 
     should 'not change correct answer' do
-      @user_question.answer!([1])
+      @user_question.update_attributes(:answers => [1])
       assert_equal true, @user_question.correct
     end
   end
@@ -37,9 +37,8 @@ class UserQuestionTest < ActiveSupport::TestCase
       @user_question = Factory(:user_question_from_expired_exam)
     end
 
-
     should 'not change correct answer' do
-      @user_question.answer!([1])
+      @user_question.update_attributes(:answers => [1])
       assert_equal nil, @user_question.correct
     end
   end
@@ -49,11 +48,9 @@ class UserQuestionTest < ActiveSupport::TestCase
       @user_question = Factory(:user_question_from_finished_exam)
     end
 
-
     should 'not change correct answer' do
-      @user_question.answer!([1])
+      @user_question.update_attributes(:answers => [1])
       assert_equal nil, @user_question.correct
     end
   end
-  
 end

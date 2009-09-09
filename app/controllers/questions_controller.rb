@@ -1,55 +1,53 @@
 class QuestionsController < ApplicationController
-  before_filter :authenticate, :admin_action
+  before_filter :authenticate, :require_admin, :find_exam
 
   def new
-    @question = Exam.find(params[:exam_id]).questions.build
-    @question.question_type = (params[:single] ? 'single' : 'multi')
+    @question = @exam.questions.build(
+      :question_type => params[:single] ? 'single' : 'multiple'
+    )
   end
   
   def create
-    question = Question.create(params[:question])
-    question.set_answers(params[:answers])
-    if question.save
-      flash[:notice] = 'Exam Question successfully created'
+    @question = @exam.questions.build(params[:question])
+    if @question.save 
+      flash[:notice] = "Successfully created question"
+      redirect_to edit_exam_url(@exam)
     else
-      flash[:error] = 'Exam Question does not created'
+      render 'new'
     end
-    redirect_to edit_exam_path(params[:question][:exam_id])
   end
 
   def edit
-    @question = Question.find(params[:id])
+    @question = @exam.questions.find(params[:id])
   end
 
   def update
-    question = Question.find(params[:id])
-    question.attributes = params[:question]
-    question.set_answers(params[:answers])
-    if question.save
-      flash[:notice] = 'Exam Question successfully updated'
+    @question = @exam.questions.find(params[:id])
+    if @question.update_attributes(params[:question])
+      flash[:notice] = "Successfully updated question"
+      redirect_to edit_exam_url(@exam)
     else
-      flash[:error] = 'Exam Question does not updated'
+      render 'edit'
     end
-    redirect_to edit_exam_path(params[:question][:exam_id])
   end
 
   def change_type
-    question = Question.find(params[:id])
-    if question.change_type.save
-      flash[:notice] = 'Question type changed successfully'
-    else
-      flash[:error] = 'Question type could not be changed'
-    end
-    redirect_to :back
+    question = @exam.questions.find(params[:id])
+    question.change_type!
+    flash[:notice] = "Successfully created question type"
+    redirect_to edit_exam_question_url(@exam, question)
   end
 
   def destroy
-    if Question.delete(params[:id])
-      flash[:notice] = 'Exam Question deleted successfully'
-    else
-      flash[:error] = 'Could not delete Exam Question'
-    end
-    redirect_to :back
+    @question = @exam.questions.find(params[:id])
+    @question.destroy
+    flash[:notice] = "Successfully deleted question"
+    redirect_to edit_exam_url(@exam)
   end
-
+  
+  private
+  
+  def find_exam
+    @exam = Exam.find(params[:exam_id])
+  end
 end

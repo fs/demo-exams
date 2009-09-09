@@ -9,12 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090708120436) do
+ActiveRecord::Schema.define(:version => 20090908171019) do
 
   create_table "exams", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "question_count"
+    t.integer  "questions_per_attempt"
     t.integer  "time_limit"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20090708120436) do
     t.text     "answer_3"
     t.text     "answer_4"
     t.text     "answer_5"
-    t.text     "answers_list"
+    t.text     "correct_answers"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

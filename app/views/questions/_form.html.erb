@@ -1,0 +1,17 @@
+<%= f.error_messages %>
+<%= f.hidden_field :question_type %>
+<fieldset>
+  <%= f.label :question %>
+  <%= f.text_area :question, :size => '30x5' %>
+</fieldset>
+<% (1..5).each do |i| %>
+  <fieldset>
+    <%= f.label "answer_#{i}" %>
+    <%= f.text_area "answer_#{i}", :size => '30x2' %>
+    <% if @question.single? %>
+      <%= radio_button_tag 'question[correct_answers][]', i, @question.correct_answer?(i) %>
+    <% else %>
+      <%= check_box_tag 'question[correct_answers][]', i, @question.correct_answer?(i) %>
+    <% end %>
+  </fieldset>
+<% end %>

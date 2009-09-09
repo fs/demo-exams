@@ -1,8 +1,13 @@
-<%= render :partial => 'exam_full', :object => @exam %>
-<% form_for @user_exam do |form| %>
+<h1>Examination</h1>
+
+<dl class="exams-list">
+  <%= render @exam %>
+</dl>
+
+<% form_for @exam.user_exams.build do |f| %>
   <div class="start-exam">
-    <%= form.hidden_field :exam_id %>
-    <button class="save" type="submit"><%= image_tag("start.png") %>Start exam</button>
-    <%= link_to '<img src="/images/cancel.png" alt="" />Cancel', :back, :class => 'button cancel' %>
+    <%= f.hidden_field :exam_id %>
+    <%= image_button_tag 'start.png', 'Start exam' %>
+    <%= cancel_button_tag(exams_path) %>
   </div>
 <% end %>

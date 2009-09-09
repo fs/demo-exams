@@ -1,16 +1,20 @@
-<fieldset>
-  <%= form.label :name, 'Name' %>
-  <%= form.text_field :name %>
-</fieldset>
-<fieldset>
-  <%= form.label :description, 'Description'%>
-  <%= form.text_area :description, :size => '30x15' %>
-</fieldset>
-<fieldset class="short">
-  <%= form.label :time_limit, 'Time limitation'%>
-  <%= form.text_field :time_limit %>
-</fieldset>
-<fieldset class="short">
-  <%= form.label :question_count, 'Question number'%>
-  <%= form.text_field :question_count %>
-</fieldset>
+
+<% if current_user.passed?(exam) %>
+<dt class="passed">
+<% elsif current_user.taken?(exam) %>
+<dt class="taken">
+<% else %>
+<dt>
+<% end %>
+  <% if_admin? do %>
+    <span><%= link_to '[ <i>Edit</i> ]', edit_exam_path(exam) %></span>
+  <% end %>
+  <%= link_to h(exam.name), exam %>
+</dt>
+<dd>
+  <div><%=h exam.description %></div>
+  <ul>
+    <li>Questions per attempt:<strong><%= exam.questions_per_attempt %></strong><span>|</span></li>
+    <li>Time limit:<strong><%= exam.time_limit %> minutes</strong></li>
+  </ul>
+</dd>

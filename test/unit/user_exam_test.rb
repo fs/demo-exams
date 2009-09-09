@@ -56,10 +56,10 @@ class UserExamTest < ActiveSupport::TestCase
   should 'start exam' do
     @user = Factory(:user)
     @exam = Factory(:exam_with_questions)
-    user_exam = UserExam.start!(@user, @exam)
+    user_exam = @user.user_exams.create(:exam_id => @exam.id)
 
     assert_equal @user, user_exam.user
     assert_equal @exam, user_exam.exam
-    assert_equal @exam.question_count, user_exam.questions.count
+    assert_equal @exam.questions_per_attempt, user_exam.questions.count
   end
 end

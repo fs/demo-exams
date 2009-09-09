@@ -1,19 +1,30 @@
 <h1>Updating exam</h1>
+
 <div class="form f-exam">
-  <% form_for @exam do |form| %>
-    <%= render :partial => 'exam', :locals => {:form => form}  %>
-    <div class="f-questions">
-      <h2>Questions list</h2>
-      <ul class="actions">
-        <li><%= link_to 'Add Multi Answer Question', new_question_path(:exam_id => @exam.id, :single => false), :class => 'button' %></li>
-        <li><%= link_to 'Add Single Answer Question', new_question_path(:exam_id => @exam.id, :single => true), :class => 'button' %></li>
-      </ul>
-      <table>
-        <%= render :partial => 'questions/question_list', :collection => @exam.questions, :locals => {:form => form} %>
-      </table>
-    </div>
+  <% form_for @exam do |f| %>
+    <%= render 'form', :f => f %>
     <div>
-      <button class="save" type="submit"><%= image_tag('save.png') %>Update</button>
+      <%= save_button_tag %>
+      <%= cancel_button_tag(exams_path) %>
     </div>
   <% end %>
+  
+  <div class="f-questions">
+    <h2>Questions list</h2>
+    <ul class="actions">
+      <li><%= link_to 'Add Multi Answer Question', new_exam_question_path(@exam, :single => false), :class => 'button' %></li>
+      <li><%= link_to 'Add Single Answer Question', new_exam_question_path(@exam, :single => true), :class => 'button' %></li>
+    </ul>
+    <table>
+      <% for question in @exam.questions %>
+      <tr class="<%= cycle("even", "odd") -%>">
+        <th>
+          <%= link_to image_tag('pencil.png'), edit_exam_question_path(@exam, question), :title => 'Edit' %>
+          <%= link_to image_tag('remove.png'), [@exam, question], :method => 'delete', :title => 'Remove' %>
+        </th>
+        <td><%=h question.question %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>

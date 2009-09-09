@@ -1,7 +1,0 @@
-<tr class="<%= cycle("even", "odd") -%>">
-  <th>
-    <%= link_to(image_tag('pencil.png'), edit_question_path(question_list.id), :title => 'Edit') %>
-    <%= link_to(image_tag('remove.png'), question_path(question_list.id), :method => 'delete', :title => 'Remove') %>
-  </th>
-  <td><%= question_list.question %></td>
-</tr>

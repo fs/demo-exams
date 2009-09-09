@@ -3,13 +3,9 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  host: tsweb.toa:4509
+  host: localhost:3000
   mails:
     noreply: noreply@flatsoft.com
-    
-local:
-  <<: *defaults
-  host: localhost:3000
 
 test:
   <<: *defaults
@@ -22,4 +18,3 @@ production:
   host: exams.flatsoft.com
   mails:
     noreply: noreply@flatsoft.com
-

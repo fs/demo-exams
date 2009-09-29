@@ -5,16 +5,16 @@ development:
   <<: *defaults
   host: localhost:3000
   mails:
-    noreply: noreply@flatsoft.com
+    noreply: noreply@flatsourcing.com
 
 test:
   <<: *defaults
   host: localhost:3000
   mails:
-    noreply: noreply@flatsoft.com
+    noreply: noreply@flatsourcing.com
 
 production:
   <<: *defaults
-  host: exams.flatsoft.com
+  host: exams.flatsourcing.com
   mails:
-    noreply: noreply@flatsoft.com
+    noreply: noreply@flatsourcing.com

@@ -14,7 +14,10 @@ test:
 
 production:
   adapter: mysql
-  database: exams_production
-  user: exams
-  password: <%= File.read(PASSWORD_FILE).chomp if File.readable? PASSWORD_FILE %>
   encoding: utf8
+  reconnect: false
+  database: exams_production
+  pool: 5
+  username: exams
+  password: <%= File.read(PASSWORD_FILE).chomp if File.readable? PASSWORD_FILE %>
+  socket: /var/lib/mysql/mysql.sock

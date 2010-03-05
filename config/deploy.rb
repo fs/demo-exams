@@ -1,5 +1,5 @@
 set :application, "exams"
-set :repository,  "git@github.com:fs/rails-exams.git"
+set :repository,  "git@github.com:fs/demo-exams.git"
 set :scm, :git
 
 # If you aren't deploying to /u/apps/#{application} on the target
